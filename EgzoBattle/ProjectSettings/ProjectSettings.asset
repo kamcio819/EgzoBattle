@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 15
-  productGUID: 00000000000000000000000000000000
+  productGUID: e61df2d9c2b6623458053b405b32d13b
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -700,7 +700,7 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   cloudProjectId: bd30febb-1930-45c9-803a-c019bd1f3070
   framebufferDepthMemorylessMode: 0
-  projectName: Networking Lobby
+  projectName: EgzoBattle (1)
   organizationId: kamcio819
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0

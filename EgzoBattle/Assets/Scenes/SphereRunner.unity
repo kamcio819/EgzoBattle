@@ -362,6 +362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1815652495}
   - component: {fileID: 1815652496}
+  - component: {fileID: 1815652497}
   m_Layer: 0
   m_Name: EnviroSpawner
   m_TagString: Untagged
@@ -399,3 +400,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meteorSpawner: {fileID: 1090080931}
   hillsSpawner: {fileID: 811660201}
+--- !u!114 &1815652497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815652494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 441a4a3aa9e092246bddba09e36ca3e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
