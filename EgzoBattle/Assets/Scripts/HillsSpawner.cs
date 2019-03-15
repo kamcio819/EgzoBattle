@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HillsSpawner : MonoBehaviour
+[RequireComponent(typeof(RandomSpherePointsSpawner))]
+public class HillsSpawner : MonoBehaviour, IUpdateable
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private RandomSpherePointsSpawner randomSpherePointsSpawner;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField]
+    private List<HillObject> hillObjectCollection = new List<HillObject>();
+
+   public void OnUpdate()
+   {
+      for(int i = 0; i < hillObjectCollection.Count; ++i) {
+          //randomSpherePointsSpawner.SpawnHill(hillObjectCollection[i]);
+      }
+   }
 }
