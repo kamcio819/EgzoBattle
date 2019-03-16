@@ -9,18 +9,20 @@ public class PlayerCollision : MonoBehaviour
     // Start is called before the first frame update
     void OnTriggerEnter(Collider collision)
     {
-        if(collision.tag == "LeftCollider") {
-            movement.enabled=false;
+        if (collision.tag == "LeftCollider")
+        {
+            movement.enabled = false;
             movement.transform.Rotate(1f, 0, 0);
         }
-        if(collision.tag == "RightCollider") {
-            movement.enabled=false;
+        if (collision.tag == "RightCollider")
+        {
+            movement.enabled = false;
             movement.transform.Rotate(-1f, 0, 0);
         }
     }
     void OnTriggerExit(Collider collider)
     {
-        movement.enabled=true;
+        movement.enabled = true;
     }
 
 }

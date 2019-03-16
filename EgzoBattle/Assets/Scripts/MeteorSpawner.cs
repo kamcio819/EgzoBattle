@@ -25,7 +25,7 @@ public class MeteorSpawner : MonoBehaviour, IUpdateable
 
    private void SpawnMeteor()
    {
-      throw new NotImplementedException();
+      //throw new NotImplementedException();
    }
 
    public void Start()
