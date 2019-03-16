@@ -10,6 +10,10 @@ public class SpawnerManager : MonoBehaviour
     [SerializeField]
     private HillsSpawner hillsSpawner; 
 
+    private void Start() {
+        meteorSpawner.OnStart();
+        hillsSpawner.OnStart();
+    }
     private void Update() {
        meteorSpawner.OnUpdate();
        hillsSpawner.OnUpdate();

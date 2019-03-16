@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class MeteorSpawner : MonoBehaviour, IUpdateable
 {
+    [Range(25, 50)]
+    public int meteorCount = 25;
     [SerializeField]
     private MeteorSpawnerController meteorSpawnerController;
 
@@ -28,10 +30,12 @@ public class MeteorSpawner : MonoBehaviour, IUpdateable
       //throw new NotImplementedException();
    }
 
-   public void Start()
+   public void OnStart()
    {
+       int minCount = 25 / meteorObjectCollection.Count;
+       int maxCount = 50 / meteorObjectCollection.Count;
        for(int i = 0; i < meteorObjectCollection.Count; ++i) {
-        MyObjectPoolManager.Instance.CreatePoolIfNotExists(meteorObjectCollection[i].gameObject, 10, 25, false);
+            MyObjectPoolManager.Instance.CreatePoolIfNotExists(meteorObjectCollection[i].gameObject, 5, 15, false);
        }
    }
 }
