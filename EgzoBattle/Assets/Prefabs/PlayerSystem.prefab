@@ -190,7 +190,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!54 &277138406
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4163502508694098898}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!136 &277138405
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4163502508694098898}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 2.414106
+  m_Height: 3.8725061
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.44244868, z: 0.88874996}
+--- !u!136 &6898424453568955517
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -217,51 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 6757722313148969319}
-  rigidbody: {fileID: 277138406, guid: a18c4a064c0256545986b267390b3fcd, type: 3}
---- !u!54 &277138406
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4163502508694098898}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!136 &6898424453568955517
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4163502508694098898}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 2.414106
-  m_Height: 3.8725061
-  m_Direction: 1
-  m_Center: {x: 0, y: -0.44244868, z: 0.88874996}
---- !u!114 &1940640787043210029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4163502508694098898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77a748fa8330b3f44912bdf01039a73d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movement: {fileID: 6757722313148969319}
-  rigidbody: {fileID: 277138406}
+  rigidbody: {fileID: 0}
 --- !u!1 &7696495490589555638
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,6 +507,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8794094689026873711}
     m_Modifications:
+    - target: {fileID: 2790648443397665379, guid: 4e8b42fc3d7ea3c43aa5c688e7da40af,
+        type: 3}
+      propertyPath: m_Name
+      value: spaceShip
+      objectReference: {fileID: 0}
     - target: {fileID: 837511256823646183, guid: 4e8b42fc3d7ea3c43aa5c688e7da40af,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -529,7 +520,7 @@ PrefabInstance:
     - target: {fileID: 837511256823646183, guid: 4e8b42fc3d7ea3c43aa5c688e7da40af,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 101.5
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 837511256823646183, guid: 4e8b42fc3d7ea3c43aa5c688e7da40af,
         type: 3}
@@ -575,11 +566,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 2790648443397665379, guid: 4e8b42fc3d7ea3c43aa5c688e7da40af,
-        type: 3}
-      propertyPath: m_Name
-      value: spaceShip
       objectReference: {fileID: 0}
     - target: {fileID: 20710283180660767, guid: 4e8b42fc3d7ea3c43aa5c688e7da40af,
         type: 3}
