@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Fire
+  - HillBlocker
+  - HillUnlocker
+  - Hills
+  - Meteor
+  - Planet
   layers:
   - Default
   - TransparentFX
