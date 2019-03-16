@@ -11,12 +11,11 @@ GameObject:
   - component: {fileID: 407250}
   - component: {fileID: 3354996}
   - component: {fileID: 2380194}
-  - component: {fileID: 951600161522101660}
   - component: {fileID: 7133282148927120698}
   - component: {fileID: 2763006451636827505}
   - component: {fileID: 5967943963304505421}
   m_Layer: 0
-  m_Name: Hill4
+  m_Name: hill4
   m_TagString: Hills
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,19 +80,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &951600161522101660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 102898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1659637650262b4485d59dbc82f696f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  meteorDataObject: {fileID: 11400000, guid: e0506434ac710e94ba900d2c72823597, type: 2}
 --- !u!54 &7133282148927120698
 Rigidbody:
   m_ObjectHideFlags: 0

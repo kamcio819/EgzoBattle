@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class ShipAnimationController : MonoBehaviour
 {
+    [SerializeField]
+    private Transform animationTransformController;
     public void RotateAnimLeft(float value) {
-        Quaternion quaternionToRotate = Quaternion.FromToRotation(gameObject.transform.forward, -gameObject.transform.right) * gameObject.transform.rotation;
-
+        Quaternion quaternionToRotate = Quaternion.FromToRotation(animationTransformController.forward, -animationTransformController.right) * animationTransformController.rotation;
    
-       gameObject.transform.rotation = Quaternion.Slerp(gameObject.transform.rotation, quaternionToRotate, 0.015f);
+       animationTransformController.rotation = Quaternion.Slerp(animationTransformController.rotation, quaternionToRotate, 0.015f);
     }
 
     public void RotateAnimRight(float value) {
-        Quaternion quaternionToRotate = Quaternion.FromToRotation(gameObject.transform.forward, gameObject.transform.right) * gameObject.transform.rotation;
+        Quaternion quaternionToRotate = Quaternion.FromToRotation(animationTransformController.forward, animationTransformController.right) * animationTransformController.rotation;
 
-       gameObject.transform.rotation = Quaternion.Slerp(gameObject.transform.rotation, quaternionToRotate, 0.015f);
+       animationTransformController.rotation = Quaternion.Slerp(animationTransformController.rotation, quaternionToRotate, 0.015f);
     }
 }
