@@ -28,7 +28,6 @@ public class RaisingManager : MonoBehaviour
             rigidbody.AddForce(-rigidbody.transform.forward * forceCoeff);
             yield return new WaitForSeconds(raisingTime);
             animator.enabled = true;
-
     }
     void OnTriggerEnter(Collider collision)
     {
