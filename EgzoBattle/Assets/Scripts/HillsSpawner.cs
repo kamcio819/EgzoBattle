@@ -31,14 +31,14 @@ public class HillsSpawner : MonoBehaviour, IUpdateable
       }
 
       PlaceHill("Hill");
-      PlaceHill("Hill1");
-      PlaceHill("Hill2");
-      PlaceHill("Hill3");
-      PlaceHill("Hill4");
-      PlaceHill("Hill5");
-      PlaceHill("Hill6");
-      PlaceHill("Hill7");
-      PlaceHill("Hill8");
+      PlaceHill("hill1");
+      PlaceHill("hill2");
+      PlaceHill("hill3");
+      PlaceHill("hill4");
+      PlaceHill("hill5");
+      PlaceHill("hill6");
+      PlaceHill("hill7");
+      PlaceHill("hill8");
    }
 
    private void PlaceHill(string name)
