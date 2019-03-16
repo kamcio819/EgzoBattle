@@ -7,7 +7,7 @@ using UnityEditor;
 public class MeteorDataObjectCreator : EditorWindow
 {
    private Material meteorDataObjectMaterial;
-   private ParticleSystem meteorDataObjectParticle;
+   private GameObject meteorDataObjectParticle;
    private float meteorDataObjectMovementSpeed;
    private float meteorDataObjectRotationSpeed;
    private string meteorDataObjectName;
@@ -32,7 +32,7 @@ public class MeteorDataObjectCreator : EditorWindow
          meteorDataObjectMaterial,
          typeof(ParticleSystem),    
          true) 
-         as ParticleSystem;
+         as GameObject;
       meteorDataObjectMovementSpeed = EditorGUILayout.FloatField("Meteor movement speed", meteorDataObjectMovementSpeed);
       meteorDataObjectRotationSpeed = EditorGUILayout.FloatField("Meteor rotation speed", meteorDataObjectRotationSpeed);
       meteorDataObjectName = EditorGUILayout.TextField("Meteor name", meteorDataObjectName);

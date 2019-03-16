@@ -6,7 +6,6 @@ using System.Linq;
 public class MyObjectPool : MonoBehaviour
 {
     public List<GameObject> pooledObjects = new List<GameObject>();
-
     private GameObject pooledObj;
     private int idLayer;
 

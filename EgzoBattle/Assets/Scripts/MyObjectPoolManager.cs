@@ -75,13 +75,13 @@ public class MyObjectPoolManager : MonoBehaviour
         return objectPools[name].pooledObjects;
     }
 
-    public GameObject GetObject(string objName, bool shouldActvateObject)
+    public GameObject GetObject(GameObject objName, bool shouldActvateObject)
     {
-        if(objName == "Hill") {
-            return MyObjectPoolManager.Instance.objectPools[objName].GetObject(shouldActvateObject, hillsParrent);
+        if(objName.GetComponent<HillObject>() != null) {
+            return MyObjectPoolManager.Instance.objectPools[objName.transform.name].GetObject(shouldActvateObject, hillsParrent);
         }
-        else if(objName == "Meteor") {
-            return MyObjectPoolManager.Instance.objectPools[objName].GetObject(shouldActvateObject, meteorParrent);
+        else if(objName.GetComponent<MeteorObject>() != null) {
+            return MyObjectPoolManager.Instance.objectPools[objName.transform.name].GetObject(shouldActvateObject, meteorParrent);
         } 
         else return null;
     }

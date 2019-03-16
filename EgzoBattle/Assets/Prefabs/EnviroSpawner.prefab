@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4027900604094266}
   - component: {fileID: 4027900604094245}
-  - component: {fileID: 4027900604094244}
   - component: {fileID: 4027900604094247}
   - component: {fileID: 1837311297}
   m_Layer: 0
@@ -50,18 +49,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meteorSpawner: {fileID: 4027900264410902}
   hillsSpawner: {fileID: 4027901614410780}
---- !u!114 &4027900604094244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4027900604094267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 441a4a3aa9e092246bddba09e36ca3e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4027900604094247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,8 +75,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc0da60f126deee44a7dfed37b8cfb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meteorSpeed: 5
   meteorPlaceForSpawning: {fileID: 0}
   playerPlaceHolder: {fileID: 0}
+  meteorSpawner: {fileID: 4027900264410902}
+  timeConst: 4
 --- !u!1001 &1647982212940200854
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -261,7 +251,7 @@ PrefabInstance:
     - target: {fileID: 5381563291776144302, guid: 33d8c12b7b2968a41bf3c8de586b83f1,
         type: 3}
       propertyPath: meteorObjectCollection.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5381563291776144302, guid: 33d8c12b7b2968a41bf3c8de586b83f1,
         type: 3}
@@ -273,6 +263,12 @@ PrefabInstance:
       propertyPath: meteorObjectCollection.Array.data[0]
       value: 
       objectReference: {fileID: 5704184456042676686, guid: 75204aeb0b1f4194e8dd78998abb7652,
+        type: 3}
+    - target: {fileID: 5381563291776144302, guid: 33d8c12b7b2968a41bf3c8de586b83f1,
+        type: 3}
+      propertyPath: meteorObjectCollection.Array.data[1]
+      value: 
+      objectReference: {fileID: 516072384547194567, guid: ea3b1b7de8e530346b335abce83beb31,
         type: 3}
     - target: {fileID: 5381563291776144303, guid: 33d8c12b7b2968a41bf3c8de586b83f1,
         type: 3}

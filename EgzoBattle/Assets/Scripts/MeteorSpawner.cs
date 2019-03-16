@@ -11,7 +11,7 @@ public class MeteorSpawner : MonoBehaviour, IUpdateable
     private MeteorSpawnerController meteorSpawnerController;
 
     [SerializeField]
-    private List<MeteorObject> meteorObjectCollection = new List<MeteorObject>();
+    public List<MeteorObject> meteorObjectCollection = new List<MeteorObject>();
 
     private float timeStep;
 
@@ -25,7 +25,7 @@ public class MeteorSpawner : MonoBehaviour, IUpdateable
    public void OnStart()
    {
        for(int i = 0; i < meteorObjectCollection.Count; ++i) {
-            MyObjectPoolManager.Instance.CreatePoolIfNotExists(meteorObjectCollection[i].gameObject, 3, 5, false);
+            MyObjectPoolManager.Instance.CreatePoolIfNotExists(meteorObjectCollection[i].gameObject, 1, 3, false);
        }
    }
    
