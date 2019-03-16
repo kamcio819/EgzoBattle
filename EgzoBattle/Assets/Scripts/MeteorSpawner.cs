@@ -18,24 +18,15 @@ public class MeteorSpawner : MonoBehaviour, IUpdateable
     private float timeConst = 10f;
 
    public void OnUpdate()
-   {
-       timeStep += Time.deltaTime;
-       if(timeStep > timeConst) {
-           SpawnMeteor();
-       }
-   }
-
-   private void SpawnMeteor()
-   {
-      //throw new NotImplementedException();
+   { 
+        meteorSpawnerController.SpawnMeteors();
    }
 
    public void OnStart()
    {
-       int minCount = 25 / meteorObjectCollection.Count;
-       int maxCount = 50 / meteorObjectCollection.Count;
        for(int i = 0; i < meteorObjectCollection.Count; ++i) {
-            MyObjectPoolManager.Instance.CreatePoolIfNotExists(meteorObjectCollection[i].gameObject, 5, 15, false);
+            MyObjectPoolManager.Instance.CreatePoolIfNotExists(meteorObjectCollection[i].gameObject, 3, 5, false);
        }
    }
+   
 }
