@@ -248,30 +248,7 @@ CapsuleCollider:
   m_Height: 3.8725061
   m_Direction: 1
   m_Center: {x: 0, y: -0.44244868, z: 0.88874996}
-<<<<<<< HEAD
 --- !u!114 &1940640787043210029
-=======
---- !u!95 &8300928471145732678
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4163502508694098898}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 222a0b60ae0e77b4ea64dc4a94e68d9b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &277138404
->>>>>>> 99ab9f6958a33b78150b00be36ead024e67b9198
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -552,7 +529,7 @@ PrefabInstance:
     - target: {fileID: 837511256823646183, guid: 4e8b42fc3d7ea3c43aa5c688e7da40af,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 101
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 837511256823646183, guid: 4e8b42fc3d7ea3c43aa5c688e7da40af,
         type: 3}
