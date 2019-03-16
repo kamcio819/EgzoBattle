@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,16 +12,13 @@ public class PlayerMovement : MonoBehaviour
     private LUNAWebSocketConnection lUNAWebSocketConnection;
 
     public GameObject sphereOne;
-
-    void FixedUpdate()
+    public void MoveRight()
     {
-        if (Input.GetKey("a"))
-        {
-            transform.RotateAround(sphereOne.transform.position, Vector3.left, sidewaysForce * Time.deltaTime);
-        }
-        if (Input.GetKey("d"))
-        {
-            transform.RotateAround(sphereOne.transform.position, Vector3.right, sidewaysForce * Time.deltaTime);
-        }
+        transform.RotateAround(sphereOne.transform.position, Vector3.right, sidewaysForce * Time.deltaTime);
+    }
+
+    public void MoveLeft()
+    {
+        transform.RotateAround(sphereOne.transform.position, Vector3.left, sidewaysForce * Time.deltaTime);
     }
 }

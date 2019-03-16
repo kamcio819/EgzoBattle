@@ -19,25 +19,25 @@ public class LUNAWebSocketConnection : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        webSocket = new WebSocket ("ws://192.168.102.59:1234");
+        webSocket = new WebSocket("ws://192.168.102.59:1234");
         webSocket.OnMessage += RecievedMessage;
 
-        webSocket.Connect ();
-        
+        webSocket.Connect();
+
 
     }
 
-   private void RecievedMessage(object sender, MessageEventArgs e)
-   {
+    private void RecievedMessage(object sender, MessageEventArgs e)
+    {
         lunaData = JsonUtility.FromJson<LUNAData>(e.Data);
-        Debug.Log(lunaData.value);
-   }
+        //Debug.Log(lunaData.value);
+    }
 
-   /// <summary>
-   /// This function is called when the behaviour becomes disabled or inactive.
-   /// </summary>
-   private void OnDisable()
-   {
-       webSocket.OnMessage -= RecievedMessage;
-   }
+    /// <summary>
+    /// This function is called when the behaviour becomes disabled or inactive.
+    /// </summary>
+    private void OnDisable()
+    {
+        webSocket.OnMessage -= RecievedMessage;
+    }
 }
