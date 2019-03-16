@@ -551,16 +551,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
-    - target: {fileID: 5946076336390853621, guid: 56e65843232746b41b253dbb83556e68,
-        type: 3}
-      propertyPath: m_Mass
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5946076336390853621, guid: 56e65843232746b41b253dbb83556e68,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3942408959523401532, guid: 56e65843232746b41b253dbb83556e68,
         type: 3}
       propertyPath: movement
@@ -581,6 +571,16 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 222a0b60ae0e77b4ea64dc4a94e68d9b, type: 2}
+    - target: {fileID: 5946076336390853621, guid: 56e65843232746b41b253dbb83556e68,
+        type: 3}
+      propertyPath: m_Mass
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5946076336390853621, guid: 56e65843232746b41b253dbb83556e68,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56e65843232746b41b253dbb83556e68, type: 3}
 --- !u!1 &4109543423580497656 stripped
