@@ -24,4 +24,11 @@ public class PlayerMovement : MonoBehaviour
             transform.RotateAround(sphereOne.transform.position, Vector3.right, sidewaysForce * Time.deltaTime);
         }
     }
+    void onCollisionEnter(Collision collision)
+    {
+        if(collision.collider.tag == "Collider") {
+            Debug.Log("Hit");
+            rigidbody.angularVelocity = new Vector3(0, 0, 0);
+        }
+    }
 }
