@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,24 +11,20 @@ public class PlayerInputController : MonoBehaviour
     [SerializeField]
     private PlayerAnimationController playerAnimationController;
 
+    private float valuePassedByLuna;
 
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        if (Input.GetKey(KeyCode.A))
-        {
-            playerMovement.MoveLeft();
-            playerAnimationController.PlayLeftAnimation();
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            playerMovement.MoveRight();
-            playerAnimationController.PlayRightAnimation();
-        }
-        else
-        {
-            playerAnimationController.StopAnimation();
-        }
+    private void OnEnable() {
+        LUNAWebSocketConnection.valueRecieved += OnUpdate;
     }
+
+   private void OnUpdate(double obj)
+   {
+      valuePassedByLuna = (float)obj;
+      Debug.Log(valuePassedByLuna);
+   }
+
+   private void FixedUpdate() {
+      playerMovement.Move(valuePassedByLuna);
+      playerMovement.DoAnim(valuePassedByLuna);
+   }
 }

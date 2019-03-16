@@ -12,6 +12,9 @@ public class MyObjectPoolManager : MonoBehaviour
     [SerializeField]
     private GameObject meteorParrent;
 
+    [SerializeField]
+    private GameObject boostersParrent;
+
     private static MyObjectPoolManager instance;
 
     private Dictionary<String, MyObjectPool> objectPools;
@@ -67,6 +70,12 @@ public class MyObjectPoolManager : MonoBehaviour
         }
         else if(objToPool.CompareTag("Meteor")) {
             nPool.SetPool(objToPool, initialPoolSize, maxPoolSize, shouldBeNetworked, meteorParrent);
+        }
+        else if(objToPool.CompareTag("RaiseObstacle")) {
+            nPool.SetPool(objToPool, initialPoolSize, maxPoolSize, shouldBeNetworked, boostersParrent);
+        }
+        else if(objToPool.CompareTag("RaiseObstacle")) {
+             nPool.SetPool(objToPool, initialPoolSize, maxPoolSize, shouldBeNetworked, boostersParrent);
         }
         objectPools.Add(objToPool.name, nPool);
     }

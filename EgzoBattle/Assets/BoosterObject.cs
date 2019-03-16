@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RotateSphere : MonoBehaviour
+public class BoosterObject : MonoBehaviour
 {
-    public float speed = 5f;
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.up, speed * Time.deltaTime);
+        
     }
 }

@@ -15,17 +15,19 @@ public class PlayerMovement : MonoBehaviour
     private ShipAnimationController shipAnimationController;
 
     public GameObject sphereOne;
-    public void MoveRight()
-    {
-        transform.RotateAround(sphereOne.transform.position, Vector3.right, sidewaysForce * Time.deltaTime);
-
-        shipAnimationController.RotateAnimRight(sidewaysForce);
+    public void Move(float value)
+    {  
+        if(value > 0) {
+            transform.RotateAround(sphereOne.transform.position, Vector3.right, sidewaysForce * value * Time.deltaTime);
+        }
+        else if(value < 0) {
+            transform.RotateAround(sphereOne.transform.position, -Vector3.right, sidewaysForce * (-1) * value * Time.deltaTime);
+        }
+        
     }
 
-    public void MoveLeft()
+    public void DoAnim(float value) 
     {
-        transform.RotateAround(sphereOne.transform.position, Vector3.left, sidewaysForce * Time.deltaTime);
-
-        shipAnimationController.RotateAnimLeft(sidewaysForce);
+        shipAnimationController.RotateAnim(sidewaysForce * value * Time.deltaTime);
     }
 }

@@ -10,6 +10,9 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField]
     private float offset;
 
+    [SerializeField]
+    private LifeController lifeController;
+
     // Start is called before the first frame update
     void OnTriggerEnter(Collider collision)
     {
@@ -22,6 +25,14 @@ public class PlayerCollision : MonoBehaviour
         {
             movement.enabled = false;
             movement.transform.Rotate(-offset, 0, 0);
+        }
+        if(collision.tag == "Hills") 
+        {
+            lifeController.TakeDamage();
+        }
+        if(collision.tag == "Meteor")
+        {
+            lifeController.TakeDamage();
         }
     }
     void OnTriggerExit(Collider collider)

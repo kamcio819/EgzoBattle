@@ -13,6 +13,7 @@ public class LUNAWebSocketConnection : MonoBehaviour
 {
     private WebSocket webSocket;
     public LUNAData lunaData = new LUNAData();
+    public static Action<double> valueRecieved;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -21,16 +22,13 @@ public class LUNAWebSocketConnection : MonoBehaviour
     {
         webSocket = new WebSocket("ws://192.168.102.59:1234");
         webSocket.OnMessage += RecievedMessage;
-
         webSocket.Connect();
-
-
     }
 
     private void RecievedMessage(object sender, MessageEventArgs e)
     {
         lunaData = JsonUtility.FromJson<LUNAData>(e.Data);
-        //Debug.Log(lunaData.value);
+        valueRecieved(lunaData.value);
     }
 
     /// <summary>

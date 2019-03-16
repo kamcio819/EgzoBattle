@@ -27,7 +27,7 @@ public class HillsSpawner : MonoBehaviour, IUpdateable
    {
       for (int i = 0; i < hillObjectCollection.Count; ++i)
       {
-         MyObjectPoolManager.Instance.CreatePoolIfNotExists(hillObjectCollection[i].gameObject, 100, 150, false);
+         MyObjectPoolManager.Instance.CreatePoolIfNotExists(hillObjectCollection[i].gameObject, 50, 80, false);
       }
 
       PlaceHill("Hill");
