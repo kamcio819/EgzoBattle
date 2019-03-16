@@ -11,7 +11,7 @@ public class RandomSpherePointsSpawner : MonoBehaviour
     private Transform sphereTransform;
 
     public void SpawnHill(GameObject hillObject) {
-        Vector3 spawnPosition = Random.onUnitSphere * (sphereCollider.radius + 1.5f * 0.5f) + sphereTransform.position;
-        GameObject newCharacter = Instantiate(hillObject, spawnPosition, Quaternion.identity);
+        Vector3 spawnPosition = Random.onUnitSphere * (sphereCollider.radius + 1.5f * 0.5f);
+        GameObject newCharacter = Instantiate(hillObject, spawnPosition, Quaternion.identity, sphereTransform.transform);
     }
 }
