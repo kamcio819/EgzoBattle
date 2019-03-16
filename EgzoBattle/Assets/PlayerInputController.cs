@@ -15,7 +15,7 @@ public class PlayerInputController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetKey(KeyCode.A))
         {
             playerMovement.MoveLeft();
             playerAnimationController.PlayLeftAnimation();

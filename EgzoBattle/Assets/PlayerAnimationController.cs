@@ -10,7 +10,6 @@ public class PlayerAnimationController : MonoBehaviour
 
     public void PlayLeftAnimation()
     {
-        Debug.Log("Play left");
         animatorPlayer.SetTrigger("TurnLeft");
     }
 

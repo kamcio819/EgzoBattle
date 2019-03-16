@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MeteorDataObject : ScriptableObject
 {
-    public ParticleSystem particleSystem;
+    public GameObject particleSystem;
     public float meteorMovementSpeed;
     public float meteorRotationSpeed;
     public Material meteorMaterial;
