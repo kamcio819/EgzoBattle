@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     public float sidewaysForce;
     [SerializeField]
     private LUNAWebSocketConnection lUNAWebSocketConnection;
+
+    public GameObject sphereOne;
     void Start()
     {
     }
@@ -16,12 +18,17 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         if (Input.GetKey("a")) {
-            rigidbody.AddForce(-sidewaysForce * Time.deltaTime * Mathf.Abs((float)lUNAWebSocketConnection.lunaData.value),
-            0, 0, ForceMode.VelocityChange);
+            transform.RotateAround(sphereOne.transform.position, Vector3.left, sidewaysForce * Time.deltaTime);
         }
         if (Input.GetKey("d")) {
-            rigidbody.AddForce(sidewaysForce * Time.deltaTime * Mathf.Abs((float)lUNAWebSocketConnection.lunaData.value),
-            0, 0, ForceMode.VelocityChange);
+            transform.RotateAround(sphereOne.transform.position, Vector3.right, sidewaysForce * Time.deltaTime);
+        }
+    }
+    void onCollisionEnter(Collision collision)
+    {
+        if(collision.collider.tag == "Collider") {
+            Debug.Log("Hit");
+            rigidbody.angularVelocity = new Vector3(0, 0, 0);
         }
     }
 }
