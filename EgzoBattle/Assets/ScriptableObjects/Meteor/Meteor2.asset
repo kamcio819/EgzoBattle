@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9b4077053a3f0b49b4ff6d8b8f45789, type: 3}
   m_Name: Meteor2
   m_EditorClassIdentifier: 
-  particleSystem: {fileID: 0}
+  particleSystem: {fileID: 521041230961022058, guid: b7b183eeabc809c4db6d6f48161e44d2,
+    type: 3}
   meteorMovementSpeed: 0
   meteorRotationSpeed: 0
   meteorMaterial: {fileID: 2100000, guid: c201d860e3bd9114ab8ba09eb9ddc832, type: 2}
