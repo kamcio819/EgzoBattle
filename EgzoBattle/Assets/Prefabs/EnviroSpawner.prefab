@@ -129,12 +129,12 @@ PrefabInstance:
     - target: {fileID: 1643954935187683210, guid: afdfd75e3e068544a935630a3de5849b,
         type: 3}
       propertyPath: hillObjectCollection.Array.size
-      value: 1
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1643954935187683210, guid: afdfd75e3e068544a935630a3de5849b,
         type: 3}
       propertyPath: howMuchHills
-      value: 80
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 1643954935187683210, guid: afdfd75e3e068544a935630a3de5849b,
         type: 3}
@@ -146,6 +146,54 @@ PrefabInstance:
       propertyPath: hillObjectCollection.Array.data[0]
       value: 
       objectReference: {fileID: 2973155110219976102, guid: 656b6d7a6fcd10a4d9a546bdbd894f00,
+        type: 3}
+    - target: {fileID: 1643954935187683210, guid: afdfd75e3e068544a935630a3de5849b,
+        type: 3}
+      propertyPath: hillObjectCollection.Array.data[1]
+      value: 
+      objectReference: {fileID: 4383239945867069450, guid: 53626206312a0e34c8b9d69f0cde2452,
+        type: 3}
+    - target: {fileID: 1643954935187683210, guid: afdfd75e3e068544a935630a3de5849b,
+        type: 3}
+      propertyPath: hillObjectCollection.Array.data[2]
+      value: 
+      objectReference: {fileID: 4623881977871402309, guid: 440691a435237c841a7b16830d776dd3,
+        type: 3}
+    - target: {fileID: 1643954935187683210, guid: afdfd75e3e068544a935630a3de5849b,
+        type: 3}
+      propertyPath: hillObjectCollection.Array.data[3]
+      value: 
+      objectReference: {fileID: 5197865924223591907, guid: abad2f0b359f8a445a4c199a05691f84,
+        type: 3}
+    - target: {fileID: 1643954935187683210, guid: afdfd75e3e068544a935630a3de5849b,
+        type: 3}
+      propertyPath: hillObjectCollection.Array.data[4]
+      value: 
+      objectReference: {fileID: 5967943963304505421, guid: 6352ac70b184ad14f97f439232978d61,
+        type: 3}
+    - target: {fileID: 1643954935187683210, guid: afdfd75e3e068544a935630a3de5849b,
+        type: 3}
+      propertyPath: hillObjectCollection.Array.data[5]
+      value: 
+      objectReference: {fileID: 5814151910255052336, guid: 00684c1d8314c3a4f8d58f4988233356,
+        type: 3}
+    - target: {fileID: 1643954935187683210, guid: afdfd75e3e068544a935630a3de5849b,
+        type: 3}
+      propertyPath: hillObjectCollection.Array.data[6]
+      value: 
+      objectReference: {fileID: 4634614188017993929, guid: dd3c1c678387e4e48ab9e711f4a22844,
+        type: 3}
+    - target: {fileID: 1643954935187683210, guid: afdfd75e3e068544a935630a3de5849b,
+        type: 3}
+      propertyPath: hillObjectCollection.Array.data[7]
+      value: 
+      objectReference: {fileID: 8491839202218872933, guid: c3ae58415e58c4c4db86b24da5468761,
+        type: 3}
+    - target: {fileID: 1643954935187683210, guid: afdfd75e3e068544a935630a3de5849b,
+        type: 3}
+      propertyPath: hillObjectCollection.Array.data[8]
+      value: 
+      objectReference: {fileID: 2544710628982713078, guid: 66384f19d8d3cc042a4841bb312b05e4,
         type: 3}
     - target: {fileID: 1643954935187683211, guid: afdfd75e3e068544a935630a3de5849b,
         type: 3}
@@ -243,7 +291,7 @@ PrefabInstance:
     - target: {fileID: 5381563291776144302, guid: 33d8c12b7b2968a41bf3c8de586b83f1,
         type: 3}
       propertyPath: meteorObjectCollection.Array.size
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5381563291776144302, guid: 33d8c12b7b2968a41bf3c8de586b83f1,
         type: 3}
@@ -255,6 +303,30 @@ PrefabInstance:
       propertyPath: meteorObjectCollection.Array.data[0]
       value: 
       objectReference: {fileID: 5065582122482440496, guid: 678bc45fa6df37043b80d12daa3a9d51,
+        type: 3}
+    - target: {fileID: 5381563291776144302, guid: 33d8c12b7b2968a41bf3c8de586b83f1,
+        type: 3}
+      propertyPath: meteorObjectCollection.Array.data[1]
+      value: 
+      objectReference: {fileID: 5704184456042676686, guid: 75204aeb0b1f4194e8dd78998abb7652,
+        type: 3}
+    - target: {fileID: 5381563291776144302, guid: 33d8c12b7b2968a41bf3c8de586b83f1,
+        type: 3}
+      propertyPath: meteorObjectCollection.Array.data[2]
+      value: 
+      objectReference: {fileID: 6425416322092055706, guid: 3277d8aafcb068342a9f3d43a8b75b8c,
+        type: 3}
+    - target: {fileID: 5381563291776144302, guid: 33d8c12b7b2968a41bf3c8de586b83f1,
+        type: 3}
+      propertyPath: meteorObjectCollection.Array.data[3]
+      value: 
+      objectReference: {fileID: 5588811471988914894, guid: 66384f19d8d3cc042a4841bb312b05e4,
+        type: 3}
+    - target: {fileID: 5381563291776144302, guid: 33d8c12b7b2968a41bf3c8de586b83f1,
+        type: 3}
+      propertyPath: meteorObjectCollection.Array.data[4]
+      value: 
+      objectReference: {fileID: 951600161522101660, guid: 6352ac70b184ad14f97f439232978d61,
         type: 3}
     - target: {fileID: 5381563291776144303, guid: 33d8c12b7b2968a41bf3c8de586b83f1,
         type: 3}

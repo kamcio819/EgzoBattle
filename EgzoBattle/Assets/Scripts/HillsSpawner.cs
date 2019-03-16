@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(RandomSpherePointsSpawner))]
 public class HillsSpawner : MonoBehaviour, IUpdateable
 {
-    [Range(50, 150)]
+    [Range(50, 200)]
     public int howMuchHills = 100;
 
     [SerializeField]
@@ -18,18 +18,35 @@ public class HillsSpawner : MonoBehaviour, IUpdateable
 
     public void OnUpdate()
     {
-        
+        if(shouldRandomizeAgain) {
+
+        }
     }
 
-    public void Start()
-    {
-       for(int i = 0; i < hillObjectCollection.Count; ++i) {
-        MyObjectPoolManager.Instance.CreatePoolIfNotExists(hillObjectCollection[i].gameObject, 50, 150, false);
-       }
+    public void OnStart()
+   {
+      for (int i = 0; i < hillObjectCollection.Count; ++i)
+      {
+         MyObjectPoolManager.Instance.CreatePoolIfNotExists(hillObjectCollection[i].gameObject, 100, 150, false);
+      }
 
-       List<GameObject> poolObjects = MyObjectPoolManager.Instance.GetAllPool("Hill");
-       for(int i = 0; i < poolObjects.Count; ++i) {
-           randomSpherePointsSpawner.PlaceHill(poolObjects[i]);
-       }
-    }
+      PlaceHill("Hill");
+      PlaceHill("Hill1");
+      PlaceHill("Hill2");
+      PlaceHill("Hill3");
+      PlaceHill("Hill4");
+      PlaceHill("Hill5");
+      PlaceHill("Hill6");
+      PlaceHill("Hill7");
+      PlaceHill("Hill8");
+   }
+
+   private void PlaceHill(string name)
+   {
+      List<GameObject> poolObjects = MyObjectPoolManager.Instance.GetAllPool(name);
+      for (int i = 0; i < poolObjects.Count; ++i)
+      {
+         randomSpherePointsSpawner.PlaceHill(poolObjects[i]);
+      }
+   }
 }
