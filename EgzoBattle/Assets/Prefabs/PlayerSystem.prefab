@@ -190,6 +190,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &506171908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4109543423580497656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9efa70568479934d8e6b79c62249da6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7696495490589555638
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,6 +252,7 @@ MonoBehaviour:
   rigidbody: {fileID: 6485420380724893326}
   sidewaysForce: 20
   lUNAWebSocketConnection: {fileID: 0}
+  shipAnimationController: {fileID: 506171908}
   sphereOne: {fileID: 0}
 --- !u!114 &7696495490589555639
 MonoBehaviour:
@@ -568,8 +581,19 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 222a0b60ae0e77b4ea64dc4a94e68d9b, type: 2}
+    - target: {fileID: 5946076336390853621, guid: 56e65843232746b41b253dbb83556e68,
+        type: 3}
+      propertyPath: m_Mass
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56e65843232746b41b253dbb83556e68, type: 3}
+--- !u!1 &4109543423580497656 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3570339025762886531, guid: 56e65843232746b41b253dbb83556e68,
+    type: 3}
+  m_PrefabInstance: {fileID: 613724940859950459}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6241472616425178236 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6780813362240979207, guid: 56e65843232746b41b253dbb83556e68,
