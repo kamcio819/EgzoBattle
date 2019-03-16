@@ -4,9 +4,15 @@ using UnityEngine;
 using System;
 using WebSocketSharp;
 
+public class LUNAData
+{
+    public string key;
+    public double value;
+}
 public class LUNAWebSocketConnection : MonoBehaviour
 {
     private WebSocket webSocket;
+    public LUNAData lunaData = new LUNAData();
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -23,7 +29,8 @@ public class LUNAWebSocketConnection : MonoBehaviour
 
    private void RecievedMessage(object sender, MessageEventArgs e)
    {
-      Debug.Log(e.Data);
+        lunaData = JsonUtility.FromJson<LUNAData>(e.Data);
+        Debug.Log(lunaData.value);
    }
 
    /// <summary>
