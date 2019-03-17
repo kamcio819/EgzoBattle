@@ -1,2 +1,2 @@
 # EgzoBattle
-Simple Unity game jam project
+Unity game which was made during EgzoTech hackathon in 24 hours!
