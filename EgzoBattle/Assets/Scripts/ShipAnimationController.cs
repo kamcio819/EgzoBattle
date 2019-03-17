@@ -10,16 +10,16 @@ public class ShipAnimationController : MonoBehaviour
     public void RotateAnimLeft(float value) {
         Quaternion quaternionToRotate = Quaternion.FromToRotation(animationTransformController.forward, -animationTransformController.right) * animationTransformController.rotation;
    
-       animationTransformController.rotation = Quaternion.Slerp(animationTransformController.rotation, quaternionToRotate, 0.03f * value * (-1));
+       animationTransformController.rotation = Quaternion.Slerp(animationTransformController.rotation, quaternionToRotate, 0.05f * value);
     }
 
     public void RotateAnimRight(float value) {
         Quaternion quaternionToRotate = Quaternion.FromToRotation(animationTransformController.forward, animationTransformController.right) * animationTransformController.rotation;
 
-       animationTransformController.rotation = Quaternion.Slerp(animationTransformController.rotation, quaternionToRotate, 0.03f * value);
+       animationTransformController.rotation = Quaternion.Slerp(animationTransformController.rotation, quaternionToRotate, 0.05f * value);
     }
 
-   internal void RotateAnim(float v)
+   public void RotateAnim(float v)
    {
        if(v < 0) {
            RotateAnimLeft(v);
@@ -29,4 +29,14 @@ public class ShipAnimationController : MonoBehaviour
        }
          
     }
+
+   public void RotateAnimSimple(float value, bool turn)
+   {
+      if(turn) {
+           RotateAnimLeft(value);
+       }
+       else if(!turn) {
+           RotateAnimRight(value);
+       }
+   }
 }

@@ -5,8 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(RandomSpherePointsSpawner))]
 public class HillsSpawner : MonoBehaviour, IUpdateable
 {
-    [Range(50, 200)]
-    public int howMuchHills = 100;
+    [Range(0, 50)]
+    public int howMuchHills = 25;
 
     [SerializeField]
     private RandomSpherePointsSpawner randomSpherePointsSpawner;
@@ -27,8 +27,10 @@ public class HillsSpawner : MonoBehaviour, IUpdateable
    {
       for (int i = 0; i < hillObjectCollection.Count; ++i)
       {
-         MyObjectPoolManager.Instance.CreatePoolIfNotExists(hillObjectCollection[i].gameObject, 50, 80, false);
+         MyObjectPoolManager.Instance.CreatePoolIfNotExists(hillObjectCollection[i].gameObject, howMuchHills + MenuManager.instance.GameDifficulty * 20, 50, false);
       }
+
+      Debug.Log(howMuchHills + MenuManager.instance.GameDifficulty);
 
       PlaceHill("Hill");
       PlaceHill("hill1");

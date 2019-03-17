@@ -20,24 +20,25 @@ public class MeteorSpawnerController : MonoBehaviour
 
     [SerializeField]
     [Tooltip("Change meteors spawning frequency (seconds timestep)")]
-    private float timeConst = 4f;
+    private float timeConst = 8f;
 
-    public void SpawnMeteors() {
+    public void SpawnMeteors(int count) {
         timeStep += Time.deltaTime;
-        if(timeStep > timeConst) {
-            SpawnMeteor();
+        if(timeStep > timeConst / MenuManager.instance.GameDifficulty) {
+            SpawnMeteor(count);
             timeStep = 0;
        }
     }
 
-   private void SpawnMeteor()
+   private void SpawnMeteor(int count)
    {
-       for(int i = 0; i < meteorSpawner.meteorObjectCollection.Count; ++i) {
-            GameObject meteor = MyObjectPoolManager.Instance.GetObject(meteorSpawner.meteorObjectCollection[i].gameObject, true);
-            if(meteor != null) {
-                SetPosition(meteor);
-                RotateMeteor(meteor);
-                meteor.GetComponent<Rigidbody>().AddForce(meteor.transform.forward * 5f, ForceMode.Acceleration);
+       for(int j = 0; j < count * MenuManager.instance.GameDifficulty; ++j) {
+            for(int i = 0; i < meteorSpawner.meteorObjectCollection.Count; ++i) {
+                    GameObject meteor = MyObjectPoolManager.Instance.GetObject(meteorSpawner.meteorObjectCollection[i].gameObject, true);
+                    if(meteor != null) {
+                        SetPosition(meteor);
+                        RotateMeteor(meteor);
+                    }
             }
        }
       
@@ -47,15 +48,15 @@ public class MeteorSpawnerController : MonoBehaviour
    {
         Vector3 direction = (playerPlaceHolder.transform.position - meteor.transform.position).normalized;
  
-        meteor.GetComponent<Rigidbody>().velocity = direction * meteorSpeed;
+        meteor.GetComponent<Rigidbody>().velocity = direction * meteorSpeed * MenuManager.instance.GameDifficulty/2f * 2;
    }
 
    private void SetPosition(GameObject meteor)
    {
         Vector3 meteorCeneterPlace = meteorPlaceForSpawning.transform.position;
         meteor.transform.position = new Vector3(
-                Random.Range(meteorCeneterPlace.x - 15f, meteorCeneterPlace.x + 15f),
+                Random.Range(meteorCeneterPlace.x - 50f, meteorCeneterPlace.x + 50f),
                 Random.Range(meteorCeneterPlace.y - 10f, meteorCeneterPlace.y - 5f),
-                Random.Range(meteorCeneterPlace.z + 5f, meteorCeneterPlace.z + 45f));
+                Random.Range(meteorCeneterPlace.z - 10f, meteorCeneterPlace.z + 80f));
    }
 }

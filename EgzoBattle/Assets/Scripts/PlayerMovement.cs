@@ -15,7 +15,8 @@ public class PlayerMovement : MonoBehaviour
     private ShipAnimationController shipAnimationController;
 
     public GameObject sphereOne;
-    public void Move(float value)
+
+    public void MoveLuna(float value)
     {  
         if(value > 0) {
             transform.RotateAround(sphereOne.transform.position, Vector3.right, sidewaysForce * value * Time.deltaTime);
@@ -26,8 +27,24 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    public void DoAnim(float value) 
+    public void MoveSimple(bool turn)
+    {  
+        if(!turn) {
+            transform.RotateAround(sphereOne.transform.position, Vector3.right, sidewaysForce * Time.deltaTime);
+        }
+        else if(turn) {
+            transform.RotateAround(sphereOne.transform.position, -Vector3.right, sidewaysForce * Time.deltaTime);
+        }
+        
+    }
+
+    public void DoAnimLuna(float value) 
     {
         shipAnimationController.RotateAnim(sidewaysForce * value * Time.deltaTime);
+    }
+
+    public void DoAnimSimple(bool turn) 
+    {
+        shipAnimationController.RotateAnimSimple(sidewaysForce * Time.deltaTime, turn);
     }
 }

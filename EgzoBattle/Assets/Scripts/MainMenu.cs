@@ -5,27 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    private int easyLvl = 0;
-    private int normalLvl = 0;
-    private int hardLvl = 0;
+    private int lvlType = 0;
     public void playGame()
     {
-        if (Equals(easyLvl, 1) || Equals(normalLvl, 2) || Equals(hardLvl, 3))
-        {
-            SceneManager.LoadScene(1);
+        if(lvlType != 0) {
+            SceneManager.LoadScene("SphereRunner");
         }
     }
-    public void easyButtonOnClick()
-    {
-        easyLvl = 1;
+
+    public void ChangeLevelDifficulty(int lvl) {
+        lvlType = lvl;
+        MenuManager.instance.GameDifficulty = lvl;
     }
-    public void normalButtonOnClick()
-    {
-        normalLvl = 2;
-    }
-    public void hardButtonOnClick()
-    {
-        hardLvl = 3;
+
+    public void ChangeLevelInput(int lvl) {
+        if(lvl == 0)
+            MenuManager.instance.ControllType = ControllerType.LUNA;
+        if(lvl == 1)
+            MenuManager.instance.ControllType = ControllerType.KEYBOARD;
     }
 
 }

@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class MeteorSpawner : MonoBehaviour, IUpdateable
 {
-    [Range(25, 50)]
-    public int meteorCount = 25;
+    [Range(2, 7)]
+    public int meteorCount = 5;
     [SerializeField]
     private MeteorSpawnerController meteorSpawnerController;
 
@@ -19,13 +19,13 @@ public class MeteorSpawner : MonoBehaviour, IUpdateable
 
    public void OnUpdate()
    { 
-        meteorSpawnerController.SpawnMeteors();
+        meteorSpawnerController.SpawnMeteors(meteorCount);
    }
 
    public void OnStart()
    {
        for(int i = 0; i < meteorObjectCollection.Count; ++i) {
-            MyObjectPoolManager.Instance.CreatePoolIfNotExists(meteorObjectCollection[i].gameObject, 1, 3, false);
+            MyObjectPoolManager.Instance.CreatePoolIfNotExists(meteorObjectCollection[i].gameObject, meteorCount, 7, false);
        }
    }
    
