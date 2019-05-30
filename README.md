@@ -12,4 +12,6 @@ Unity game which was made during EgzoTech hackathon in 24 hours!
 
 # Some screenshots
 
-
+![Alt text](EgzoBattle/Media/1.png?raw=true)
+![Alt text](EgzoBattle/Media/2.png?raw=true)
+![Alt text](EgzoBattle/Media/3.png?raw=true)
