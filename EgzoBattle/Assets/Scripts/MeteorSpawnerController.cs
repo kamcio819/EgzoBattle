@@ -25,6 +25,7 @@ public class MeteorSpawnerController : MonoBehaviour
     public void SpawnMeteors(int count) {
         timeStep += Time.deltaTime;
         if(timeStep > timeConst / MenuManager.instance.GameDifficulty) {
+   
             SpawnMeteor(count);
             timeStep = 0;
        }
