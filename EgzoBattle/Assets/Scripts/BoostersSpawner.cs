@@ -5,7 +5,7 @@ using UnityEngine;
 public class BoostersSpawner : MonoBehaviour, IUpdateable
 {
 
-    [Range(50, 200)]
+    [Range(10, 200)]
     public int howMuchHills = 100;
 
     [SerializeField]
@@ -23,6 +23,7 @@ public class BoostersSpawner : MonoBehaviour, IUpdateable
 
       PlaceHill("booster Variant");
       PlaceHill("booster2 Variant");
+      
    }
 
    public void OnUpdate()

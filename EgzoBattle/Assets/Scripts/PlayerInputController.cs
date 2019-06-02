@@ -43,11 +43,11 @@ public class PlayerInputController : MonoBehaviour
        else if(controllerType == ControllerType.KEYBOARD) {
         if(Input.GetKey(KeyCode.A)) {
             playerMovement.MoveSimple(true);
-            playerMovement.DoAnimSimple(true);
+            //playerMovement.DoAnimSimple(true);
             }
         else if(Input.GetKey(KeyCode.D)) {
             playerMovement.MoveSimple(false);
-            playerMovement.DoAnimSimple(false);
+            //playerMovement.DoAnimSimple(false);
         }
     }
     

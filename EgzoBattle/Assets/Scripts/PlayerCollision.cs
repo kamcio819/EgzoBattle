@@ -5,7 +5,9 @@ using UnityEngine;
 public class PlayerCollision : MonoBehaviour
 {
     public PlayerMovement movement;
-    public Rigidbody rigidbody;
+    
+    [SerializeField]
+    private BoosterManager boosterManager;
 
     [SerializeField]
     private float offset;
@@ -13,10 +15,7 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField]
     private LifeController lifeController;
 
-    private void Start()
-    {
-        var sphereCurrentSpeedRotation = sphere.GetComponent<RotateSphere>().speed;
-    }
+
     void OnTriggerEnter(Collider collision)
     {
         if (collision.tag == "LeftCollider")
@@ -37,7 +36,18 @@ public class PlayerCollision : MonoBehaviour
         {
             lifeController.TakeDamage();
         }
+        if(collision.tag == "BoosterObstacle")
+        {
+            Debug.Log("boosteobstacle");
+            StartCoroutine(boosterManager.AddSpeedToShipOverTime());
+        }
 
+        if(collision.tag == "RaiseObstacle")
+        {
+            Debug.Log("raiseobstacle");
+            boosterManager.AddForceToShipOverTime();
+
+        }
     }
     void OnTriggerExit(Collider collider)
     {

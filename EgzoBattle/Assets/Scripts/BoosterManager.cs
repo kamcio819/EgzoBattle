@@ -3,57 +3,61 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using DG.Tweening;
 
 public class BoosterManager : MonoBehaviour
 {
-    public RotateSphere rotateSphere;
+    [SerializeField] private AnimationCurve boosterAnimation;
+    [SerializeField] private Transform spaceShipModel;
+    [SerializeField] private PlayerMovement playerMovement;
 
     [Header("Speed Booster")]
-    [SerializeField] private GameObject sphere;
+
+    [SerializeField] private RotateSphere sphere;
     [SerializeField] private float speedGivenByBooster;
     [SerializeField] private float timeInHigherSpeed;
     
     [Header("Up Booster")]
+
     //[SerializeField] GameObject spaceShipModel;
     [SerializeField] private float timeInAir;
-    private Rigidbody spaceshipRigidbody;
+    [SerializeField] private float raisingTime;
+    [SerializeField] private float distanceToRaise = 110f;
 
-    private void Start()
-    {
-        spaceshipRigidbody = GetComponent<Rigidbody>();
-        var sphereCurrentSpeedRotation = sphere.GetComponent<RotateSphere>().speed;
-    } 
-    private void OnTriggerEnter(Collider other)
-    {
-       if(other.tag == "BoosterObstacle")
-       {
-        //    AddSpeedOverTime();
-       }
+    bool isBoostedUp;
 
-       if(other.tag == "RaiseObstacle")
-       {
-           StartCoroutine(AddForceToShipOverTime());
-       }  
-    }
-
-    private IEnumerator AddForceToShipOverTime()
+    public void AddForceToShipOverTime()
     {
-        var timer = 0.0f;
-        while (timer < timeInAir)
+        if(!isBoostedUp)
         {
-           timer += Time.fixedDeltaTime;
-           spaceshipRigidbody.AddForce(new Vector3(0,0,50));
-           yield return new WaitForFixedUpdate();       
-        }       
-    }
-    private void AddSpeedToShipOverTime()
-    {
-        var timer =0.0f;
-        while(timer < timeInHigherSpeed)
-        {
-            timer += Time.deltaTime;
-            sphere.transform.Rotate(Vector3.up, speedGivenByBooster * Time.deltaTime);
+
+        playerMovement.StopIdleAnim();
+
+        float currentPosition = spaceShipModel.position.y;
+        Tween goUp = spaceShipModel.DOMoveY(distanceToRaise , raisingTime).SetEase(boosterAnimation);
+        Tween goDown = spaceShipModel.DOMoveY(currentPosition, raisingTime).SetEase(boosterAnimation);
+        
+        Sequence doRaise = DOTween.Sequence();
+        doRaise.Append(goUp);
+        doRaise.AppendInterval(timeInAir);
+        doRaise.Append(goDown);
+        doRaise.AppendCallback(onJumpComplete);
+        doRaise.Play();
+        isBoostedUp = true;
         }
     }
+    public IEnumerator AddSpeedToShipOverTime()
+    {
+        float currentSphereRotationSpeed = sphere.speed;
+        sphere.speed = speedGivenByBooster;
+        yield return new WaitForSeconds(timeInHigherSpeed);
+        sphere.speed = currentSphereRotationSpeed;
+    }
+    
 
+    private void onJumpComplete()
+    {
+        isBoostedUp = false;
+        playerMovement.StartIdleAinm();
+    }
 }

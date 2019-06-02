@@ -74,7 +74,7 @@ public class MyObjectPoolManager : MonoBehaviour
         else if(objToPool.CompareTag("RaiseObstacle")) {
             nPool.SetPool(objToPool, initialPoolSize, maxPoolSize, shouldBeNetworked, boostersParrent);
         }
-        else if(objToPool.CompareTag("RaiseObstacle")) {
+        else if(objToPool.CompareTag("BoosterObstacle")) {
              nPool.SetPool(objToPool, initialPoolSize, maxPoolSize, shouldBeNetworked, boostersParrent);
         }
         objectPools.Add(objToPool.name, nPool);
