@@ -13,7 +13,10 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField]
     private LifeController lifeController;
 
-    // Start is called before the first frame update
+    private void Start()
+    {
+        var sphereCurrentSpeedRotation = sphere.GetComponent<RotateSphere>().speed;
+    }
     void OnTriggerEnter(Collider collision)
     {
         if (collision.tag == "LeftCollider")
@@ -34,10 +37,12 @@ public class PlayerCollision : MonoBehaviour
         {
             lifeController.TakeDamage();
         }
+
     }
     void OnTriggerExit(Collider collider)
     {
         movement.enabled = true;
     }
+
 
 }
