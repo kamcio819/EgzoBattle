@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ControllerType{
+public enum ControllerType
+{
     LUNA,
     KEYBOARD
 }
@@ -19,38 +20,52 @@ public class PlayerInputController : MonoBehaviour
     private PlayerAnimationController playerAnimationController;
 
     private float valuePassedByLuna;
+    private Action onUpdate = delegate { };
 
-    private void OnEnable() {
-        if(controllerType == ControllerType.LUNA)
-            LUNAWebSocketConnection.valueRecieved += OnUpdate;
+    private void OnEnable()
+    {
+        Lean.Touch.LeanTouch.OnFingerDown += (Lean.Touch.LeanFinger finger) => { onUpdate += MoveOnTouch; };
+        Lean.Touch.LeanTouch.OnFingerUp += (Lean.Touch.LeanFinger finger) => { onUpdate -= MoveOnTouch; };
     }
 
-   private void OnUpdate(double obj)
-   {
-       if(controllerType == ControllerType.LUNA) {
-            LUNAWebSocketConnection.valueRecieved += OnUpdate;
-            valuePassedByLuna = (float)obj;
-            Debug.Log(valuePassedByLuna);
-       }
-       
-   }
+    private void OnDisable()
+    {
+        Lean.Touch.LeanTouch.OnFingerDown -= (Lean.Touch.LeanFinger finger) => { onUpdate += MoveOnTouch; };
+        Lean.Touch.LeanTouch.OnFingerUp -= (Lean.Touch.LeanFinger finger) => { onUpdate -= MoveOnTouch; };
+    }
 
-   private void FixedUpdate() {
-       if(controllerType == ControllerType.LUNA) {
-            playerMovement.MoveLuna(valuePassedByLuna);
-            playerMovement.DoAnimLuna(valuePassedByLuna);
-       }
-       else if(controllerType == ControllerType.KEYBOARD) {
-        if(Input.GetKey(KeyCode.A)) {
-            playerMovement.MoveSimple(true);
-            //playerMovement.DoAnimSimple(true);
+    private void FixedUpdate()
+    {
+        if (controllerType == ControllerType.KEYBOARD)
+        {
+            if (Input.GetKey(KeyCode.A))
+            {
+                playerMovement.MoveSimple(true);
+                //playerMovement.DoAnimSimple(true);
             }
-        else if(Input.GetKey(KeyCode.D)) {
+            else if (Input.GetKey(KeyCode.D))
+            {
+                playerMovement.MoveSimple(false);
+                //playerMovement.DoAnimSimple(false);
+            }
+        }
+
+        onUpdate();
+
+
+    }
+
+    private void MoveOnTouch()
+    {
+        var finger = Lean.Touch.LeanTouch.Fingers[0];
+
+        if (finger.ScreenPosition.x < Screen.width / 2)
+        {
+            playerMovement.MoveSimple(true);
+        }
+        else
+        {
             playerMovement.MoveSimple(false);
-            //playerMovement.DoAnimSimple(false);
         }
     }
-    
-    
-   }
 }
