@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public float sidewaysForce;
     [SerializeField]
     private LUNAWebSocketConnection lUNAWebSocketConnection;
-  
+
     [SerializeField]
     private ShipAnimationController shipAnimationController;
 
@@ -20,61 +20,46 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform spaceshipModel;
 
     private Sequence idleAnimation;
-    private void Awake() 
+    private void Awake()
     {
         SetUpIdleAnim();
     }
-    public void MoveLuna(float value)
-    {  
-        if(value > 0) {
-            transform.RotateAround(sphereOne.transform.position, Vector3.right, sidewaysForce * value * Time.deltaTime);
-        }
-        else if(value < 0) {
-            transform.RotateAround(sphereOne.transform.position, -Vector3.right, sidewaysForce * (-1) * value * Time.deltaTime);
-        }
-        
-    }
 
     public void MoveSimple(bool turn)
-    {  
-        if(!turn) {
+    {
+        if (!turn)
+        {
             transform.RotateAround(sphereOne.transform.position, Vector3.right, sidewaysForce * Time.deltaTime);
         }
-        else if(turn) {
+        else if (turn)
+        {
             transform.RotateAround(sphereOne.transform.position, -Vector3.right, sidewaysForce * Time.deltaTime);
         }
-        
     }
-
-    public void DoAnimLuna(float value) 
-    {
-        shipAnimationController.RotateAnim(sidewaysForce * value * Time.deltaTime);
-    }
-
-    public void DoAnimSimple(bool turn) 
+    public void DoAnimSimple(bool turn)
     {
         shipAnimationController.RotateAnimSimple(sidewaysForce * Time.deltaTime, turn);
     }
 
     public void SetUpIdleAnim()
     {
-        float currentPosition = spaceshipModel.position.y;        
-        Tween goUp = spaceshipModel.DOMoveY(currentPosition+1 , 1).SetEase(spaceshipAnimation);
+        float currentPosition = spaceshipModel.position.y;
+        Tween goUp = spaceshipModel.DOMoveY(currentPosition + 1, 1).SetEase(spaceshipAnimation);
         Tween goDown = spaceshipModel.DOMoveY(currentPosition, 1).SetEase(spaceshipAnimation);
 
         Sequence doAnim = DOTween.Sequence();
         doAnim.Append(goUp);
         doAnim.Append(goDown);
-        doAnim.SetLoops(-1,LoopType.Restart);
+        doAnim.SetLoops(-1, LoopType.Restart);
         idleAnimation = doAnim;
         StartIdleAinm();
     }
-    
+
     public void StartIdleAinm()
     {
         idleAnimation.Play();
     }
-    
+
     public void StopIdleAnim()
     {
         idleAnimation.Pause();

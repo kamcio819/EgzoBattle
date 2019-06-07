@@ -36,19 +36,19 @@ public class PlayerInputController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (controllerType == ControllerType.KEYBOARD)
-        {
-            if (Input.GetKey(KeyCode.A))
-            {
-                playerMovement.MoveSimple(true);
-                //playerMovement.DoAnimSimple(true);
-            }
-            else if (Input.GetKey(KeyCode.D))
-            {
-                playerMovement.MoveSimple(false);
-                //playerMovement.DoAnimSimple(false);
-            }
-        }
+        // if (controllerType == ControllerType.KEYBOARD)
+        // {
+        //     if (Input.GetKey(KeyCode.A))
+        //     {
+        //         playerMovement.MoveSimple(true);
+        //         //playerMovement.DoAnimSimple(true);
+        //     }
+        //     else if (Input.GetKey(KeyCode.D))
+        //     {
+        //         playerMovement.MoveSimple(false);
+        //         //playerMovement.DoAnimSimple(false);
+        //     }
+        // }
 
         onUpdate();
 

@@ -16,7 +16,7 @@ public class BoosterManager : MonoBehaviour
     [SerializeField] private RotateSphere sphere;
     [SerializeField] private float speedGivenByBooster;
     [SerializeField] private float timeInHigherSpeed;
-    
+
     [Header("Up Booster")]
 
     //[SerializeField] GameObject spaceShipModel;
@@ -28,22 +28,22 @@ public class BoosterManager : MonoBehaviour
 
     public void AddForceToShipOverTime()
     {
-        if(!isBoostedUp)
+        if (!isBoostedUp)
         {
 
-        playerMovement.StopIdleAnim();
+            playerMovement.StopIdleAnim();
 
-        float currentPosition = spaceShipModel.position.y;
-        Tween goUp = spaceShipModel.DOMoveY(distanceToRaise , raisingTime).SetEase(boosterAnimation);
-        Tween goDown = spaceShipModel.DOMoveY(currentPosition, raisingTime).SetEase(boosterAnimation);
-        
-        Sequence doRaise = DOTween.Sequence();
-        doRaise.Append(goUp);
-        doRaise.AppendInterval(timeInAir);
-        doRaise.Append(goDown);
-        doRaise.AppendCallback(onJumpComplete);
-        doRaise.Play();
-        isBoostedUp = true;
+            float currentPosition = spaceShipModel.position.y;
+            Tween goUp = spaceShipModel.DOMoveY(distanceToRaise, raisingTime).SetEase(boosterAnimation);
+            Tween goDown = spaceShipModel.DOMoveY(currentPosition, raisingTime).SetEase(boosterAnimation);
+
+            Sequence doRaise = DOTween.Sequence();
+            doRaise.Append(goUp);
+            doRaise.AppendInterval(timeInAir);
+            doRaise.Append(goDown);
+            doRaise.AppendCallback(onJumpComplete);
+            doRaise.Play();
+            isBoostedUp = true;
         }
     }
     public IEnumerator AddSpeedToShipOverTime()
@@ -53,7 +53,7 @@ public class BoosterManager : MonoBehaviour
         yield return new WaitForSeconds(timeInHigherSpeed);
         sphere.speed = currentSphereRotationSpeed;
     }
-    
+
 
     private void onJumpComplete()
     {
