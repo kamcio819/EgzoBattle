@@ -10,8 +10,9 @@ public class RandomSpherePointsSpawner : MonoBehaviour
     [SerializeField]
     private Transform sphereTransform;
 
-    public void PlaceHill(GameObject hillObject) {
-        Vector3 spawnPosition = Random.onUnitSphere * (sphereCollider.radius + 1.5f * 0.5f) + sphereTransform.position;
+    public void PlaceHill(GameObject hillObject)
+    {
+        Vector3 spawnPosition = Random.onUnitSphere * (sphereCollider.radius + 1.5f * 2f) + sphereTransform.position;
         hillObject.transform.position = spawnPosition;
     }
 }

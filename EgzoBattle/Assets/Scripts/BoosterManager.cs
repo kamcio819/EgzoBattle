@@ -23,8 +23,10 @@ public class BoosterManager : MonoBehaviour
     [SerializeField] private float timeInAir;
     [SerializeField] private float raisingTime;
     [SerializeField] private float distanceToRaise = 110f;
+    [SerializeField] private float currentSpaceshipPosition = 101.5f;
 
     bool isBoostedUp;
+    Sequence upBoosterAnim;
 
     public void AddForceToShipOverTime()
     {
@@ -32,17 +34,8 @@ public class BoosterManager : MonoBehaviour
         {
 
             playerMovement.StopIdleAnim();
-
-            float currentPosition = spaceShipModel.position.y;
-            Tween goUp = spaceShipModel.DOMoveY(distanceToRaise, raisingTime).SetEase(boosterAnimation);
-            Tween goDown = spaceShipModel.DOMoveY(currentPosition, raisingTime).SetEase(boosterAnimation);
-
-            Sequence doRaise = DOTween.Sequence();
-            doRaise.Append(goUp);
-            doRaise.AppendInterval(timeInAir);
-            doRaise.Append(goDown);
-            doRaise.AppendCallback(onJumpComplete);
-            doRaise.Play();
+            SetUpBoosterUpAnim(upBoosterAnim);
+            upBoosterAnim.Play();
             isBoostedUp = true;
         }
     }
@@ -59,5 +52,17 @@ public class BoosterManager : MonoBehaviour
     {
         isBoostedUp = false;
         playerMovement.StartIdleAinm();
+    }
+
+    private void SetUpBoosterUpAnim(Sequence upAnim)
+    {
+        Tween goUp = spaceShipModel.DOLocalMoveY(distanceToRaise, raisingTime).SetEase(boosterAnimation);
+        Tween goDown = spaceShipModel.DOLocalMoveY(currentSpaceshipPosition, raisingTime).SetEase(boosterAnimation);
+
+        upAnim = DOTween.Sequence();
+        upAnim.Append(goUp);
+        upAnim.AppendInterval(timeInAir);
+        upAnim.Append(goDown);
+        upAnim.AppendCallback(onJumpComplete);
     }
 }

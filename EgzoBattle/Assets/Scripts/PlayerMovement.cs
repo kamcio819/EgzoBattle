@@ -7,7 +7,6 @@ using DG.Tweening;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Rigidbody rigidbody;
     public float sidewaysForce;
     [SerializeField]
     private LUNAWebSocketConnection lUNAWebSocketConnection;
@@ -20,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform spaceshipModel;
 
     private Sequence idleAnimation;
+    [SerializeField] private float currentSpaceshipPosition = 101.5f;
     private void Awake()
     {
         SetUpIdleAnim();
@@ -43,9 +43,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetUpIdleAnim()
     {
-        float currentPosition = spaceshipModel.position.y;
-        Tween goUp = spaceshipModel.DOMoveY(currentPosition + 1, 1).SetEase(spaceshipAnimation);
-        Tween goDown = spaceshipModel.DOMoveY(currentPosition, 1).SetEase(spaceshipAnimation);
+
+        Tween goUp = spaceshipModel.DOLocalMoveY(currentSpaceshipPosition + 1, 1).SetEase(spaceshipAnimation);
+        Tween goDown = spaceshipModel.DOLocalMoveY(currentSpaceshipPosition, 1).SetEase(spaceshipAnimation);
 
         Sequence doAnim = DOTween.Sequence();
         doAnim.Append(goUp);
@@ -57,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void StartIdleAinm()
     {
+        Debug.Log("xDD");
         idleAnimation.Play();
     }
 
