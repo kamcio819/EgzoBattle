@@ -12,14 +12,13 @@ public class PlayerInputController : MonoBehaviour
 {
     [SerializeField]
     private PlayerMovement playerMovement;
+    [SerializeField]
+    private ShipAnimationController shipAnimationController;
 
     [HideInInspector]
     public static ControllerType controllerType = ControllerType.KEYBOARD;
 
-    [SerializeField]
-    private PlayerAnimationController playerAnimationController;
-
-    private float valuePassedByLuna;
+    [SerializeField] float movementTreshold = 0.2f;
     private Action onUpdate = delegate { };
 
     private void OnEnable()
@@ -36,7 +35,8 @@ public class PlayerInputController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        onUpdate();
+        MoveOnGryo();
+        //onUpdate();
     }
 
     private void MoveOnTouch()
@@ -45,11 +45,31 @@ public class PlayerInputController : MonoBehaviour
 
         if (finger.ScreenPosition.x < Screen.width / 2)
         {
-            playerMovement.MoveSimple(true);
+            playerMovement.MoveSimpleOnTouch(true);
         }
         else
         {
-            playerMovement.MoveSimple(false);
+            playerMovement.MoveSimpleOnTouch(false);
         }
     }
+
+    private void MoveOnGryo()
+    {
+        if (Input.acceleration.x < -movementTreshold)
+        {
+            playerMovement.MoveSimpleOnGyro(true, Input.acceleration.x);
+
+        }
+        else if (Input.acceleration.x > movementTreshold)
+        {
+            playerMovement.MoveSimpleOnGyro(false, Input.acceleration.x);
+        }
+        else
+        {
+            playerMovement.OnPotentialBackToOroginalRotation();
+        }
+
+    }
+
+
 }

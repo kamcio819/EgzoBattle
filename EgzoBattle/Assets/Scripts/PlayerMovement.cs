@@ -9,36 +9,21 @@ public class PlayerMovement : MonoBehaviour
 {
     public float sidewaysForce;
     [SerializeField]
-    private LUNAWebSocketConnection lUNAWebSocketConnection;
-
-    [SerializeField]
-    private ShipAnimationController shipAnimationController;
-
     public GameObject sphereOne;
     [SerializeField] private AnimationCurve spaceshipAnimation;
+    [SerializeField] private ShipAnimationController shipAnimationController;
     [SerializeField] private Transform spaceshipModel;
 
     private Sequence idleAnimation;
     [SerializeField] private float currentSpaceshipPosition = 101.5f;
+
+    public bool IsOnRotatingRight { get; set; }
+    public bool IsOnRotatingLeft { get; set; }
+
     private void Awake()
     {
         SetUpIdleAnim();
-    }
-
-    public void MoveSimple(bool turn)
-    {
-        if (!turn)
-        {
-            transform.RotateAround(sphereOne.transform.position, Vector3.right, sidewaysForce * Time.deltaTime);
-        }
-        else if (turn)
-        {
-            transform.RotateAround(sphereOne.transform.position, -Vector3.right, sidewaysForce * Time.deltaTime);
-        }
-    }
-    public void DoAnimSimple(bool turn)
-    {
-        shipAnimationController.RotateAnimSimple(sidewaysForce * Time.deltaTime, turn);
+        shipAnimationController.Init(StartIdleAinm, StopIdleAnim);
     }
 
     public void SetUpIdleAnim()
@@ -55,14 +40,62 @@ public class PlayerMovement : MonoBehaviour
         StartIdleAinm();
     }
 
+
+    public void MoveSimpleOnTouch(bool turn)
+    {
+        if (!turn)
+        {
+            transform.RotateAround(sphereOne.transform.position, Vector3.right, sidewaysForce * Time.deltaTime);
+        }
+        else if (turn)
+        {
+            transform.RotateAround(sphereOne.transform.position, -Vector3.right, sidewaysForce * Time.deltaTime);
+        }
+    }
+
+    public void MoveSimpleOnGyro(bool turn, float x)
+    {
+        if (!turn)
+        {
+            if (!IsOnRotatingRight)
+            {
+                IsOnRotatingRight = true;
+                shipAnimationController.StartRotateRight();
+            }
+            transform.RotateAround(sphereOne.transform.position, Vector3.right, sidewaysForce * Mathf.Abs(x) * Time.deltaTime);
+
+        }
+        else if (turn)
+        {
+            if (!IsOnRotatingLeft)
+            {
+                IsOnRotatingLeft = true;
+                shipAnimationController.StartRotateLeft();
+            }
+            transform.RotateAround(sphereOne.transform.position, -Vector3.right, sidewaysForce * Mathf.Abs(x) * Time.deltaTime);
+        }
+
+    }
+
     public void StartIdleAinm()
     {
-        Debug.Log("xDD");
         idleAnimation.Play();
     }
 
     public void StopIdleAnim()
     {
         idleAnimation.Pause();
+    }
+
+
+
+    public void OnPotentialBackToOroginalRotation()
+    {
+        if (IsOnRotatingLeft || IsOnRotatingRight)
+        {
+            IsOnRotatingLeft = false;
+            IsOnRotatingRight = false;
+            shipAnimationController.StartRotateOriginal();
+        }
     }
 }

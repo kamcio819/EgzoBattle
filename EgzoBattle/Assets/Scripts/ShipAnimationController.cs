@@ -2,35 +2,72 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public class ShipAnimationController : MonoBehaviour
 {
-    [SerializeField]
-    private Transform animationTransformController;
-    public void RotateAnimLeft(float value)
-    {
-        Quaternion quaternionToRotate = Quaternion.FromToRotation(animationTransformController.forward, -animationTransformController.right) * animationTransformController.rotation;
+    [SerializeField] private Transform spaceShip;
+    [SerializeField] private float maxRotateRight;
+    [SerializeField] private float maxRotateLeft;
+    private float defaultRotation = -90f;
 
-        animationTransformController.rotation = Quaternion.Slerp(animationTransformController.rotation, quaternionToRotate, 0.05f * value);
+    [SerializeField] private int maxDuration;
+    Tween rotateLeft;
+    Tween rotateRight;
+    Tween rotateToOriginal;
+
+    private Action onStartIdle = delegate { };
+    private Action onEndIdle = delegate { };
+
+    public void Init(Action onStartIdle, Action onEndIdle)
+    {
+        this.onStartIdle = onStartIdle;
+        this.onEndIdle = onEndIdle;
     }
 
-    public void RotateAnimRight(float value)
+    public void StartRotateLeft()
     {
-        Quaternion quaternionToRotate = Quaternion.FromToRotation(animationTransformController.forward, animationTransformController.right) * animationTransformController.rotation;
+        onEndIdle();
+        KillCurentlyWorkingTweens();
+        rotateLeft = spaceShip.DOLocalRotate(new Vector3(maxRotateLeft, 0, -90), 1f);
 
-        animationTransformController.rotation = Quaternion.Slerp(animationTransformController.rotation, quaternionToRotate, 0.05f * value);
+    }
+    public void StartRotateRight()
+    {
+        onEndIdle();
+        KillCurentlyWorkingTweens();
+        rotateRight = spaceShip.DOLocalRotate(new Vector3(maxRotateRight, 0, -90), 1f);
+
+    }
+    public void StartRotateOriginal()
+    {
+
+        KillCurentlyWorkingTweens();
+        rotateToOriginal = spaceShip.DOLocalRotate(new Vector3(defaultRotation, 0, -90), 1f).OnComplete(() => { onStartIdle(); });
+    }
+    public float GetDuration(float maxRotation)
+    {
+        float currentRotation = spaceShip.localRotation.eulerAngles.x;
+        float rotationToMaxRotation = maxRotation - currentRotation;
+        float duration = (rotationToMaxRotation / 180) * maxDuration;
+        Debug.Log(Mathf.Abs(rotationToMaxRotation));
+        return Mathf.Abs(duration);
     }
 
-
-    public void RotateAnimSimple(float value, bool turn)
+    public void KillCurentlyWorkingTweens()
     {
-        if (turn)
+        if (rotateLeft != null)
         {
-            RotateAnimLeft(value);
+            rotateLeft.Kill();
         }
-        else if (!turn)
+        if (rotateRight != null)
         {
-            RotateAnimRight(value);
+            rotateRight.Kill();
+        }
+        if (rotateToOriginal != null)
+        {
+            rotateToOriginal.Kill();
         }
     }
+
+
 }
