@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         SetUpIdleAnim();
-        shipAnimationController.Init(StartIdleAinm, StopIdleAnim);
+        shipAnimationController.Init(StartIdleAinmIfNotBoostedUp, StopIdleAnim);
     }
 
     public void SetUpIdleAnim()
@@ -80,6 +80,14 @@ public class PlayerMovement : MonoBehaviour
     public void StartIdleAinm()
     {
         idleAnimation.Play();
+    }
+
+    public void StartIdleAinmIfNotBoostedUp()
+    {
+        if (!BoosterManager.isBoostedUp)
+        {
+            idleAnimation.Play();
+        }
     }
 
     public void StopIdleAnim()

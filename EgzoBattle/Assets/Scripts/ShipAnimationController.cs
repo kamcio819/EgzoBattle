@@ -8,7 +8,7 @@ public class ShipAnimationController : MonoBehaviour
     [SerializeField] private Transform spaceShip;
     [SerializeField] private float maxRotateRight;
     [SerializeField] private float maxRotateLeft;
-    private float defaultRotation = -90f;
+    private float defaultRotation = 0;
 
     [SerializeField] private int maxDuration;
     Tween rotateLeft;
@@ -28,21 +28,21 @@ public class ShipAnimationController : MonoBehaviour
     {
         onEndIdle();
         KillCurentlyWorkingTweens();
-        rotateLeft = spaceShip.DOLocalRotate(new Vector3(maxRotateLeft, 0, -90), 1f);
+        rotateLeft = spaceShip.DOLocalRotate(new Vector3(maxRotateLeft, 0, 0), 1f, RotateMode.Fast);
 
     }
     public void StartRotateRight()
     {
         onEndIdle();
         KillCurentlyWorkingTweens();
-        rotateRight = spaceShip.DOLocalRotate(new Vector3(maxRotateRight, 0, -90), 1f);
+        rotateRight = spaceShip.DOLocalRotate(new Vector3(maxRotateRight, 0, 0), 1f, RotateMode.Fast);
 
     }
     public void StartRotateOriginal()
     {
 
         KillCurentlyWorkingTweens();
-        rotateToOriginal = spaceShip.DOLocalRotate(new Vector3(defaultRotation, 0, -90), 1f).OnComplete(() => { onStartIdle(); });
+        rotateToOriginal = spaceShip.DOLocalRotate(new Vector3(defaultRotation, 0, 0), 1f, RotateMode.Fast).OnComplete(() => { onStartIdle(); });
     }
     public float GetDuration(float maxRotation)
     {

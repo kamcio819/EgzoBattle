@@ -25,18 +25,18 @@ public class BoosterManager : MonoBehaviour
     [SerializeField] private float distanceToRaise = 110f;
     [SerializeField] private float currentSpaceshipPosition = 101.5f;
 
-    bool isBoostedUp;
+    public static bool isBoostedUp;
     Sequence upBoosterAnim;
 
     public void AddForceToShipOverTime()
     {
-        if (!isBoostedUp)
+        if (!BoosterManager.isBoostedUp)
         {
 
             playerMovement.StopIdleAnim();
             SetUpBoosterUpAnim(upBoosterAnim);
             upBoosterAnim.Play();
-            isBoostedUp = true;
+            BoosterManager.isBoostedUp = true;
         }
     }
     public IEnumerator AddSpeedToShipOverTime()
@@ -50,7 +50,7 @@ public class BoosterManager : MonoBehaviour
 
     private void onJumpComplete()
     {
-        isBoostedUp = false;
+        BoosterManager.isBoostedUp = false;
         playerMovement.StartIdleAinm();
     }
 
