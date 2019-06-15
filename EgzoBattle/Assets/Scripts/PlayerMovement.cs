@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public float sidewaysForce;
     [SerializeField]
     public GameObject sphereOne;
+    [SerializeField] private float maxSidewaysMovementOffset;
+    private float currentSidewaysMovementOffset;
     [SerializeField] private AnimationCurve spaceshipAnimation;
     [SerializeField] private ShipAnimationController shipAnimationController;
     [SerializeField] private Transform spaceshipModel;
@@ -57,22 +59,35 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!turn)
         {
-            if (!IsOnRotatingRight)
+            if (currentSidewaysMovementOffset < maxSidewaysMovementOffset)
             {
-                IsOnRotatingRight = true;
-                shipAnimationController.StartRotateRight();
-            }
-            transform.RotateAround(sphereOne.transform.position, Vector3.right, sidewaysForce * Mathf.Abs(x) * Time.deltaTime);
+                if (!IsOnRotatingRight)
+                {
+                    IsOnRotatingRight = true;
+                    shipAnimationController.StartRotateRight();
+                }
 
+                float movedistance = sidewaysForce * Mathf.Abs(x) * Time.deltaTime;
+                transform.RotateAround(sphereOne.transform.position, Vector3.right, movedistance);
+                currentSidewaysMovementOffset = Mathf.Clamp(currentSidewaysMovementOffset + movedistance, -maxSidewaysMovementOffset, maxSidewaysMovementOffset);
+            }
         }
         else if (turn)
         {
-            if (!IsOnRotatingLeft)
+            if (currentSidewaysMovementOffset > -maxSidewaysMovementOffset)
             {
-                IsOnRotatingLeft = true;
-                shipAnimationController.StartRotateLeft();
+
+                if (!IsOnRotatingLeft)
+                {
+                    IsOnRotatingLeft = true;
+                    shipAnimationController.StartRotateLeft();
+                }
+
+                float movedistance = sidewaysForce * Mathf.Abs(x) * Time.deltaTime;
+                transform.RotateAround(sphereOne.transform.position, -Vector3.right, movedistance);
+                currentSidewaysMovementOffset = Mathf.Clamp(currentSidewaysMovementOffset - movedistance, -maxSidewaysMovementOffset, maxSidewaysMovementOffset);
+
             }
-            transform.RotateAround(sphereOne.transform.position, -Vector3.right, sidewaysForce * Mathf.Abs(x) * Time.deltaTime);
         }
 
     }
