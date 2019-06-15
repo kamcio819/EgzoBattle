@@ -50,13 +50,14 @@ public class ShipAnimationController : MonoBehaviour
         float currentRotation = spaceShip.localRotation.eulerAngles.x;
         float rotationToMaxRotation = Mathf.Abs(maxRotation - currentRotation);
 
-        Debug.Log(rotationToMaxRotation);
-        if (rotationToMaxRotation > 180)
-        {
-            rotationToMaxRotation = 360 - rotationToMaxRotation;
-        }
+        // if (rotationToMaxRotation > 180)
+        // {
+        //     rotationToMaxRotation = 360 - rotationToMaxRotation;
+        // }
+        rotationToMaxRotation = rotationToMaxRotation % 180;
 
         float duration = (rotationToMaxRotation / 180) * maxDuration;
+        Debug.Log(rotationToMaxRotation);
         return duration;
     }
 

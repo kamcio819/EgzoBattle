@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerCollision : MonoBehaviour
 {
     public PlayerMovement movement;
-    
+
     [SerializeField]
     private BoosterManager boosterManager;
 
@@ -28,23 +28,22 @@ public class PlayerCollision : MonoBehaviour
             movement.enabled = false;
             movement.transform.Rotate(-offset, 0, 0);
         }
-        if(collision.tag == "Hills") 
+        if (collision.tag == "Hills")
         {
             lifeController.TakeDamage();
         }
-        if(collision.tag == "Meteor")
+        if (collision.tag == "Meteor")
         {
             lifeController.TakeDamage();
         }
-        if(collision.tag == "BoosterObstacle")
+        if (collision.tag == "BoosterObstacle")
         {
             Debug.Log("boosteobstacle");
             StartCoroutine(boosterManager.AddSpeedToShipOverTime());
         }
 
-        if(collision.tag == "RaiseObstacle")
+        if (collision.tag == "RaiseObstacle")
         {
-            Debug.Log("raiseobstacle");
             boosterManager.AddForceToShipOverTime();
 
         }
