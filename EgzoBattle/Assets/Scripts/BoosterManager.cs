@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using DG.Tweening;
+using UnityEngine.Rendering.PostProcessing;
+
 
 public class BoosterManager : MonoBehaviour
 {
@@ -28,6 +30,18 @@ public class BoosterManager : MonoBehaviour
     public static bool isBoostedUp;
     Sequence upBoosterAnim;
 
+    PostProcessVolume m_Volume;
+    ChromaticAberration chromaticAbberation;
+
+    private void Start()
+    {
+        chromaticAbberation = ScriptableObject.CreateInstance<ChromaticAberration>();
+        chromaticAbberation.enabled.Override(true);
+        chromaticAbberation.intensity.Override(0.06f);
+
+        m_Volume = PostProcessManager.instance.QuickVolume(gameObject.layer, 100f, chromaticAbberation);
+    }
+
     public void AddForceToShipOverTime()
     {
         if (!BoosterManager.isBoostedUp)
@@ -41,9 +55,11 @@ public class BoosterManager : MonoBehaviour
     }
     public IEnumerator AddSpeedToShipOverTime()
     {
+        chromaticAbberation.intensity.value = Mathf.Lerp(chromaticAbberation.intensity.value, 1f, 5f);
         float currentSphereRotationSpeed = sphere.speed;
         sphere.speed = speedGivenByBooster;
         yield return new WaitForSeconds(timeInHigherSpeed);
+        chromaticAbberation.intensity.value = Mathf.Lerp(chromaticAbberation.intensity.value, 0.06f, 5f);
         sphere.speed = currentSphereRotationSpeed;
     }
 
