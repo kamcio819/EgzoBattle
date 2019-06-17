@@ -27,6 +27,8 @@ public class BoosterManager : MonoBehaviour
     [SerializeField] private float distanceToRaise = 110f;
     [SerializeField] private float currentSpaceshipPosition = 101.5f;
 
+    [SerializeField] private LifeController lifeController;
+
     public static bool isBoostedUp;
     Sequence upBoosterAnim;
 
@@ -80,5 +82,11 @@ public class BoosterManager : MonoBehaviour
         upAnim.AppendInterval(timeInAir);
         upAnim.Append(goDown);
         upAnim.AppendCallback(onJumpComplete);
+    }
+
+    private void Update() {
+        if(lifeController.currentHp <= 0) {
+            chromaticAbberation.intensity.value = Mathf.Lerp(chromaticAbberation.intensity.value, 0.06f, 5f);
+        }
     }
 }
