@@ -15,6 +15,7 @@ public class LifeController : MonoBehaviour
     private void Awake()
     {
         heartSystemController.Initialize(maxHp);
+        StartCoroutine(waitWhileInvunerable());
     }
 
     public void TakeDamage()
