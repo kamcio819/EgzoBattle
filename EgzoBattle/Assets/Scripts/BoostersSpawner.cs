@@ -36,7 +36,6 @@ public class BoostersSpawner : MonoBehaviour, IUpdateable
       List<GameObject> poolObjects = MyObjectPoolManager.Instance.GetAllPool(name);
       for (int i = 0; i < poolObjects.Count; ++i)
       {
-         randomSpherePointsSpawner.PlaceHill(poolObjects[i]);
       }
    }
 }
