@@ -9,22 +9,22 @@ public class MenuManager : MonoBehaviour
 
     public static MenuManager instance = null;
 
-   public int GameDifficulty { get => gameDifficulty; set => gameDifficulty = value; }
-   public ControllerType ControllType { get => controllType; set => controllType = value; }
+    public int GameDifficulty { get => gameDifficulty; set => gameDifficulty = value; }
+    public ControllerType ControllType { get => controllType; set => controllType = value; }
 
-   private void Awake()
+    private void Awake()
     {
         if (instance == null)
-        {    
+        {
             instance = this;
         }
 
-        else if (instance != this)
-        {
-            Destroy(gameObject);
-        }
+        // else if (instance != this)
+        // {
+        //     Destroy(gameObject);
+        // }
 
-        DontDestroyOnLoad(gameObject);    
-        
+        // DontDestroyOnLoad(gameObject);    
+
     }
 }

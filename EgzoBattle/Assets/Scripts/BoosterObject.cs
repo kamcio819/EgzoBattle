@@ -5,5 +5,9 @@ using UnityEngine;
 public class BoosterObject : MonoBehaviour
 {
 
-    
+    private void Awake()
+    {
+
+    }
+
 }
