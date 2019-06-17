@@ -31,7 +31,4 @@ public class GameManager : MonoBehaviour
     {
         counterText.enabled = false;
     }
-
-
-
 }
