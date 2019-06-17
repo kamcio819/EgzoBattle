@@ -13,27 +13,19 @@ public class FinalCanvasController : MonoBehaviour
 
     private Action onUpdate = delegate { };
 
-    private void OnEnable()
-    {
-        Lean.Touch.LeanTouch.OnFingerDown += (Lean.Touch.LeanFinger finger) => { onUpdate += returnTotitleScreen; };
-    }
-
-    private void OnDisable()
-    {
-        Lean.Touch.LeanTouch.OnFingerDown -= (Lean.Touch.LeanFinger finger) => { onUpdate += returnTotitleScreen; };
-    }
-
     public void Display()
     {
         textObject.text = string.Format(scoretext, gameManager.counterPointsOnGUI);
         gameManager.DisableCounter();
         parentCanvas.SetActive(true);
         Time.timeScale = 0;
+        Lean.Touch.LeanTouch.OnFingerDown += (Lean.Touch.LeanFinger finger) => { onUpdate += returnTotitleScreen; };
     }
 
     private void returnTotitleScreen()
     {
         Time.timeScale = 1;
+        Lean.Touch.LeanTouch.OnFingerDown -= (Lean.Touch.LeanFinger finger) => { onUpdate += returnTotitleScreen; };
         SceneManager.LoadScene(0);
     }
 

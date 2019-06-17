@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI counterText;
     public int counterPointsOnGUI;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         counterText.enabled = true;
         counterPointsOnGUI = 0;
