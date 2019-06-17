@@ -36,7 +36,7 @@ public class MeteorSpawnerController : MonoBehaviour
        for(int j = 0; j < count * MenuManager.instance.GameDifficulty; ++j) {
             for(int i = 0; i < meteorSpawner.meteorObjectCollection.Count; ++i) {
                     singleMeteorCounter += Time.deltaTime;
-                    if(singleMeteorCounter > 0.8f) {
+                    if(singleMeteorCounter > 0.4f) {
                          GameObject meteor = MyObjectPoolManager.Instance.GetObject(meteorSpawner.meteorObjectCollection[Random.Range(0, meteorSpawner.meteorObjectCollection.Count)].gameObject, true);
                          if(meteor != null) {
                               SetPosition(meteor);
