@@ -49,7 +49,7 @@ public class MeteorSpawnerController : MonoBehaviour
    {
         Vector3 direction = (playerPlaceHolder.transform.position - meteor.transform.position).normalized;
  
-        meteor.GetComponent<Rigidbody>().velocity = direction * meteorSpeed * MenuManager.instance.GameDifficulty/2f * 2;
+        meteor.GetComponent<Rigidbody>().velocity = direction * Random.Range(5, 10) * MenuManager.instance.GameDifficulty/2f * 2;
    }
 
    private void SetPosition(GameObject meteor)
