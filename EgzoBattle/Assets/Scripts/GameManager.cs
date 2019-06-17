@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private RotateSphere rotateSphere;
     [SerializeField] TextMeshProUGUI counterText;
-    public int counterPointsOnGUI;
+    public float counterPointsOnGUI;
     // Start is called before the first frame update
     void Awake()
     {
@@ -18,8 +18,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        counterPointsOnGUI++;
-        counterText.text = counterPointsOnGUI.ToString();
+        counterPointsOnGUI += Time.deltaTime * 100f;
+        counterText.text = ((int)counterPointsOnGUI).ToString();
 
         if (int.Parse(counterText.text) % 10000 == 0)
         {
