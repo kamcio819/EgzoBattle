@@ -5,33 +5,33 @@ using UnityEngine;
 
 public class LifeController : MonoBehaviour
 {
-    [SerializeField]
-    private MeshRenderer meshRenderer;
+    [SerializeField] private HeartSystemController heartSystemController;
+    [SerializeField] private MeshFlashAnimator meshFlashAnimator;
+    [SerializeField] private float invunerablilityTime;
+    [SerializeField] private int maxHp;
+    private bool invunaerable = false;
 
-    [SerializeField]
-    private HeartSystemController heartSystemController;
-
-    public void TakeDamage() {
-        heartSystemController.DisableHeart();
-        StartCoroutine(FlashMesh());
+    private void Awake()
+    {
+        heartSystemController.Initialize(maxHp);
     }
 
-   private IEnumerator FlashMesh()
-   {
-      meshRenderer.enabled = !meshRenderer.enabled;
-      yield return new WaitForSeconds(0.1f);
-      meshRenderer.enabled = !meshRenderer.enabled;
-      yield return new WaitForSeconds(0.1f);
-      meshRenderer.enabled = !meshRenderer.enabled;
-      yield return new WaitForSeconds(0.1f);
-      meshRenderer.enabled = !meshRenderer.enabled;
-      yield return new WaitForSeconds(0.15f);
-      meshRenderer.enabled = !meshRenderer.enabled;
-      yield return new WaitForSeconds(0.15f);
-      meshRenderer.enabled = !meshRenderer.enabled;
-      yield return new WaitForSeconds(0.15f);
-   }
+    public void TakeDamage()
+    {
+        if (!invunaerable)
+        {
+            heartSystemController.DisableHeart();
+            meshFlashAnimator.FlashMesh();
+            StartCoroutine(waitWhileInvunerable());
+        }
+    }
 
-    
+    private IEnumerator waitWhileInvunerable()
+    {
+        invunaerable = true;
+        yield return new WaitForSeconds(invunerablilityTime);
+        invunaerable = false;
+    }
+
 
 }

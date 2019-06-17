@@ -5,20 +5,36 @@ using UnityEngine.UI;
 
 public class HeartSystemController : MonoBehaviour
 {
-    [SerializeField]
-    private Image[] heartsImages;
-    
-    private int index = 0;
+    [SerializeField] private GameObject heartImagePrefab;
+    private List<GameObject> hearts;
+    private int currentHPIndex = 0;
+    private int maxHP = 0;
 
-    public void DisableHeart() {
-        heartsImages[index].gameObject.SetActive(false);
-        index++;
-        index %= 3;
+    public void Initialize(int _maxHP)
+    {
+        maxHP = _maxHP;
+        currentHPIndex = _maxHP - 1;
+
+        hearts = new List<GameObject>();
+
+        for (int i = 0; i < _maxHP; ++i)
+        {
+            hearts.Add(Instantiate(heartImagePrefab, transform));
+        }
     }
 
-    public void EnableHearts() {
-        for(int i = 0; i < heartsImages.Length; ++i) {
-            heartsImages[i].gameObject.SetActive(true);
+    public void DisableHeart()
+    {
+        hearts[currentHPIndex].SetActive(false);
+        currentHPIndex--;
+    }
+
+    public void EnableHearts()
+    {
+        for (int i = 0; i < hearts.Count; ++i)
+        {
+            hearts[i].SetActive(true);
         }
+        currentHPIndex = maxHP - 1;
     }
 }
