@@ -9,6 +9,7 @@ public class LifeController : MonoBehaviour
     [SerializeField] private MeshFlashAnimator meshFlashAnimator;
     [SerializeField] private float invunerablilityTime;
     [SerializeField] private int maxHp;
+    public int currentHp { private set { currentHp = value; } get { return heartSystemController.currentHP; } }
     private bool invunaerable = false;
 
     private void Awake()

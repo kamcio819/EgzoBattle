@@ -7,10 +7,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private RotateSphere rotateSphere;
     [SerializeField] TextMeshProUGUI counterText;
-    private int counterPointsOnGUI;
+    public int counterPointsOnGUI;
     // Start is called before the first frame update
     void Start()
     {
+        counterText.enabled = true;
         counterPointsOnGUI = 0;
     }
 
@@ -20,9 +21,15 @@ public class GameManager : MonoBehaviour
         counterPointsOnGUI++;
         counterText.text = counterPointsOnGUI.ToString();
 
-        if(int.Parse(counterText.text) % 10000 == 0) {
+        if (int.Parse(counterText.text) % 10000 == 0)
+        {
             rotateSphere.speed *= 1.2f;
         }
+    }
+
+    public void DisableCounter()
+    {
+        counterText.enabled = false;
     }
 
 

@@ -7,8 +7,10 @@ public class HeartSystemController : MonoBehaviour
 {
     [SerializeField] private GameObject heartImagePrefab;
     private List<GameObject> hearts;
-    private int currentHPIndex = 0;
     private int maxHP = 0;
+    private int currentHPIndex = 0;
+    public int currentHP { get { return currentHPIndex + 1; } set { currentHP = value; } }
+
 
     public void Initialize(int _maxHP)
     {
@@ -25,7 +27,10 @@ public class HeartSystemController : MonoBehaviour
 
     public void DisableHeart()
     {
-        hearts[currentHPIndex].SetActive(false);
+        if (currentHPIndex >= 0)
+        {
+            hearts[currentHPIndex].SetActive(false);
+        }
         currentHPIndex--;
     }
 
