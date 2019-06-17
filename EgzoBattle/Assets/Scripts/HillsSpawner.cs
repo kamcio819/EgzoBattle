@@ -48,7 +48,7 @@ public class HillsSpawner : MonoBehaviour, IUpdateable
       List<GameObject> poolObjects = MyObjectPoolManager.Instance.GetAllPool(name);
       for (int i = 0; i < poolObjects.Count; ++i)
       {
-         randomSpherePointsSpawner.PlaceHill(poolObjects[i]);
+         randomSpherePointsSpawner.PlaceHill(poolObjects[i] , 0.2f);
       }
    }
 }
