@@ -47,6 +47,10 @@ public class PlayerCollision : MonoBehaviour
             boosterManager.AddForceToShipOverTime();
 
         }
+
+        if(collision.tag == "Planet") {
+            lifeController.TakeDamage();
+        }
     }
     void OnTriggerExit(Collider collider)
     {
