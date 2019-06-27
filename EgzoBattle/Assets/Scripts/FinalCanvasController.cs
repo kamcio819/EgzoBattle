@@ -9,7 +9,7 @@ public class FinalCanvasController : MonoBehaviour
     [SerializeField] private GameObject parentCanvas;
     [SerializeField] private TextMeshProUGUI textObject;
     [SerializeField] private GameManager gameManager;
-    private string scoretext = "<color=#FFF800> You finished the game with score of <color=#ffffff> {0} <color=#FFF800> points.";
+    private string scoretext = "<color=#FFFFFF> You finished the game with score of <color=#ffffff> {0} <color=#FFFFFF> points.";
 
     private Action onUpdate = delegate { };
 
