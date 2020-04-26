@@ -2,7 +2,7 @@
 Unity game which was made during EgzoTech hackathon in 24 hours!
 
 # Unity Version
-2018.2f
+2019.3.9f
 
 # Features:
 - Procedurally generated maps
