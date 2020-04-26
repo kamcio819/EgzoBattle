@@ -5,18 +5,21 @@ using UnityEngine;
 public class Singleton<T> : MonoBehaviour
     where T : class
 {
-   private static T instance;
+    private static T instance;
 
-   public static T Instance { get { return instance; } }
+    public static T Instance { get { return instance; } }
 
-   protected virtual void Awake() {
-      if (instance != null && instance != this as T) {
-         Destroy(this.gameObject);
-      }
-      else {
-         instance = this as T;
-      }
+    protected virtual void Awake()
+    {
+        if (instance != null && instance != this as T)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this as T;
+        }
 
-      DontDestroyOnLoad(this);
-   }
+        DontDestroyOnLoad(this);
+    }
 }
