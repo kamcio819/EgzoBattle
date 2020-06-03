@@ -24,5 +24,6 @@ public class LifeController : MonoBehaviour
             meshRenderer.enabled = !meshRenderer.enabled;
             yield return new WaitForSeconds(0.1f);
         }
+        meshRenderer.enabled = true;
     }
 }

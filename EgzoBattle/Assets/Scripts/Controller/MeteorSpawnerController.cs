@@ -19,6 +19,9 @@ public class MeteorSpawnerController : MonoBehaviour
     private float timeStep;
 
     [SerializeField]
+    private List<GameObject> meteors = new List<GameObject>();
+
+    [SerializeField]
     [Tooltip("Change meteors spawning frequency (seconds timestep)")]
     private float timeConst = 8f;
 
@@ -27,7 +30,6 @@ public class MeteorSpawnerController : MonoBehaviour
         timeStep += Time.deltaTime;
         if (timeStep > timeConst / MenuManager.Instance.GameDifficulty)
         {
-
             SpawnMeteor(count);
             timeStep = 0;
         }
@@ -40,6 +42,7 @@ public class MeteorSpawnerController : MonoBehaviour
             for (int i = 0; i < meteorSpawner.meteorObjectCollection.Count; ++i)
             {
                 GameObject meteor = MyObjectPoolManager.Instance.GetObject(meteorSpawner.meteorObjectCollection[i].gameObject, true);
+                meteors.Add(meteor);
                 if (meteor != null)
                 {
                     SetPosition(meteor);
@@ -52,9 +55,10 @@ public class MeteorSpawnerController : MonoBehaviour
 
     private void RotateMeteor(GameObject meteor)
     {
-        Vector3 direction = (playerPlaceHolder.transform.position - meteor.transform.position).normalized;
+        Vector3 direction = (playerPlaceHolder.transform.position - meteor.transform.position);
 
-        meteor.GetComponent<Rigidbody>().velocity = direction * meteorSpeed * MenuManager.Instance.GameDifficulty / 2f * 2;
+        meteor.GetComponent<Rigidbody>().velocity = direction.normalized * meteorSpeed * MenuManager.Instance.GameDifficulty / 2f * 2;
+        meteor.transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
     }
 
     private void SetPosition(GameObject meteor)
